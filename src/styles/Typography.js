@@ -4,11 +4,12 @@ const Typography = createGlobalStyle`
     :root {
         --primary: #397D54;
         --secondary: #E4D5C7;
+        --darktone : #186049;
         --background: #F8F6F5;
         --font-primary: #212429;
         --font-secondary: #495057;
+        --font-white: #ffffff;
         --highlight: #73C088;
-        --white: #ffffff;
     }
 
     html {
