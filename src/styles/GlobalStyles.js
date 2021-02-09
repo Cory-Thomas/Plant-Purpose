@@ -22,12 +22,23 @@ const GlobalStyles = createGlobalStyle`
     color: var(--font-white);
   }
 
-  button:hover {
+  button:hover, .button-secondary:hover {
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   }
 
   button:focus {
-      background-color: var(--darktone);
+    background-color: var(--darktone);
+  }
+
+  .button-secondary {
+    background: var(--secondary);
+    border-radius: 4px;
+    color: var(--font-secondary);
+  }
+
+  .button-secondary:focus {
+    background-color: var(--secondary);
+    color: var(--primary);
   }
 `;
 

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import 'normalize.css';
 import { Home } from './components/Home';
 import { Route, Link, useHistory } from 'react-router-dom';
 import GlobalStyles from './styles/GlobalStyles';

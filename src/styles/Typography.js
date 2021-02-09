@@ -13,7 +13,7 @@ const Typography = createGlobalStyle`
     }
 
     html {
-        font-family: Helvetica, Arial, sans-serif;
+        font-family: 'Poppins', sans-serif;
         color: var(--font-primary);
         font-size: 62.5%;
     }
