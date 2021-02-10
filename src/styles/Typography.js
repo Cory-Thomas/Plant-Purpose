@@ -22,6 +22,14 @@ const Typography = createGlobalStyle`
         font-size: 1.6rem;
     }
 
+    button {
+        color: var(--font-white);
+        font-weight: bold;
+        font-size: 1.4rem;
+        line-height: 21px;
+        letter-spacing: 0.08em;
+    }
+
     a:visited {
         color: var(--font);
     }

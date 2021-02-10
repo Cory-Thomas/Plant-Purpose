@@ -19,7 +19,6 @@ const GlobalStyles = createGlobalStyle`
   button {
     background: var(--primary);
     border-radius: 4px;
-    color: var(--font-white);
     border: 0px;
   }
 
