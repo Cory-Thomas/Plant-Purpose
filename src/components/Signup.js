@@ -117,8 +117,6 @@ export default function Signup({ history, setLoggedIn }) {
         <div>
           Already have an account? <Link to='/Login'>Log in</Link>
         </div>
-        <h2>hey</h2>
-        <h3>hey</h3>
       </form>
     </div>
   );

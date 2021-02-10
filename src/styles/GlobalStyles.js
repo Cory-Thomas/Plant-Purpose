@@ -20,6 +20,7 @@ const GlobalStyles = createGlobalStyle`
     background: var(--primary);
     border-radius: 4px;
     color: var(--font-white);
+    border: 0px;
   }
 
   button:hover, .button-secondary:hover {
