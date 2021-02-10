@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
+import 'normalize.css';
 import { Home } from './components/Home';
 import { Route, Link, useHistory } from 'react-router-dom';
+import GlobalStyles from './styles/GlobalStyles';
+import Typography from './styles/Typography';
 import { PlantContext } from './components/context/PlantContext';
 import Login from './components/Login';
 import Signup from './components/Signup';
@@ -17,7 +20,10 @@ function App() {
   };
 
   return (
-    <div className='App'>
+    <div>
+      <GlobalStyles />
+      <Typography />
+
       <nav>
         <Link to='/'>Home</Link>
         {/* 
