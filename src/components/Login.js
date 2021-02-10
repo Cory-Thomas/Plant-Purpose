@@ -126,7 +126,7 @@ export default function Login({ history, setLoggedIn }) {
           {errors ? errors.password : null}
 
           <button disabled={buttonDisabled} type='submit'>
-            Login
+            Sign In
           </button>
         </form>
       </div>

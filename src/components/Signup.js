@@ -77,47 +77,54 @@ export default function Signup({ history, setLoggedIn }) {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <h2>Sign-up</h2>
+      <nav>
+        <Link to='/login'>Sign In</Link>
+        <Link to='/signup'>Sign up</Link>
+      </nav>
 
-        <div>
-          <label htmlFor='username'>Username:</label>
-          <input
-            type='text'
-            id='username'
-            name='username'
-            placeholder='Username'
-            value={formState.username}
-            onChange={inputChange}
-          />
-        </div>
+      <div>
+        <h2>Create An Account!</h2>
+        <p>
+          Keep forgetting to water your plants? No problem. We have the
+          solution. Sign up today.
+        </p>
 
-        {/* Shows an error on screen if username field is empty */}
-        {errors ? errors.username : null}
+        <form onSubmit={handleSubmit}>
+          <div>
+            <label htmlFor='username'>Username:</label>
+            <input
+              type='text'
+              id='username'
+              name='username'
+              placeholder='Username'
+              value={formState.username}
+              onChange={inputChange}
+            />
+          </div>
 
-        <div>
-          <label htmlFor='password'>Password:</label>
-          <input
-            type='password'
-            id='password'
-            name='password'
-            placeholder='Password'
-            value={formState.password}
-            onChange={inputChange}
-          />
-        </div>
+          {/* Shows an error on screen if username field is empty */}
+          {errors ? errors.username : null}
 
-        {/* Shows an error on screen if password field is empty */}
-        {errors ? errors.password : null}
+          <div>
+            <label htmlFor='password'>Password:</label>
+            <input
+              type='password'
+              id='password'
+              name='password'
+              placeholder='Password'
+              value={formState.password}
+              onChange={inputChange}
+            />
+          </div>
 
-        <button disabled={buttonDisabled} type='submit'>
-          Sign up
-        </button>
+          {/* Shows an error on screen if password field is empty */}
+          {errors ? errors.password : null}
 
-        <div>
-          Already have an account? <Link to='/Login'>Log in</Link>
-        </div>
-      </form>
+          <button disabled={buttonDisabled} type='submit'>
+            Create Account
+          </button>
+        </form>
+      </div>
     </div>
   );
 }
