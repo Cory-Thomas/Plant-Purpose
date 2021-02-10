@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import * as yup from 'yup';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
+import { StyledDiv } from './LoginSignup-styling';
 
 export default function Signup({ history, setLoggedIn }) {
   const [buttonDisabled, setButtonDisabled] = useState(true);
@@ -76,13 +77,13 @@ export default function Signup({ history, setLoggedIn }) {
   };
 
   return (
-    <div>
+    <StyledDiv>
       <nav>
         <Link to='/login'>Sign In</Link>
         <Link to='/signup'>Sign up</Link>
       </nav>
 
-      <div>
+      <section>
         <h2>Create An Account!</h2>
         <p>
           Keep forgetting to water your plants? No problem. We have the
@@ -124,7 +125,7 @@ export default function Signup({ history, setLoggedIn }) {
             Create Account
           </button>
         </form>
-      </div>
-    </div>
+      </section>
+    </StyledDiv>
   );
 }

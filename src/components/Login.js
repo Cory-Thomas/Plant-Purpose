@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import * as yup from 'yup';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
+import { StyledDiv } from './LoginSignup-styling';
 
 export default function Login({ history, setLoggedIn }) {
   const [buttonDisabled, setButtonDisabled] = useState(true);
@@ -81,13 +82,13 @@ export default function Login({ history, setLoggedIn }) {
   };
 
   return (
-    <div>
+    <StyledDiv>
       <nav>
         <Link to='/login'>Sign In</Link>
         <Link to='/signup'>Sign up</Link>
       </nav>
 
-      <div>
+      <section>
         <h2>Welcome Back!</h2>
         <p>
           Your plants missed you. Don't forget to check up on how they are
@@ -129,7 +130,7 @@ export default function Login({ history, setLoggedIn }) {
             Sign In
           </button>
         </form>
-      </div>
-    </div>
+      </section>
+    </StyledDiv>
   );
 }
