@@ -33,12 +33,10 @@ const GlobalStyles = createGlobalStyle`
   .button-secondary {
     background: var(--secondary);
     border-radius: 4px;
-    color: var(--font-secondary);
   }
 
   .button-secondary:focus {
     background-color: var(--secondary);
-    color: var(--primary);
   }
 `;
 

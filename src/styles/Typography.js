@@ -30,6 +30,14 @@ const Typography = createGlobalStyle`
         letter-spacing: 0.08em;
     }
 
+    .button-secondary {
+        color: var(--font-secondary);
+    }
+
+    .button-secondary:focus {
+        color: var(--primary);
+    }
+
     a:visited {
         color: var(--font);
     }
