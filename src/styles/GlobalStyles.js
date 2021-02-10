@@ -4,7 +4,7 @@ const GlobalStyles = createGlobalStyle`
   html {
     width: 100vw;
     height: 100vh;
-    background: var(--white);
+    background-color: var(--white);
   }
   
   img {
@@ -17,7 +17,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   button {
-    background: var(--primary);
+    background-color: var(--primary);
     border-radius: 4px;
     border: 0px;
   }
@@ -31,7 +31,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   .button-secondary {
-    background: var(--secondary);
+    background-color: var(--secondary);
     border-radius: 4px;
   }
 
