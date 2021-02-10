@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 import 'normalize.css';
 import { Home } from './components/Home';
 import { Route, Link, useHistory } from 'react-router-dom';
+import { PrivateRoute } from './components/PrivateRoute';
 import GlobalStyles from './styles/GlobalStyles';
 import Typography from './styles/Typography';
 import { PlantContext } from './components/context/PlantContext';
 import Login from './components/Login';
 import Signup from './components/Signup';
+import { Dashboard } from './components/Dashboard';
 
 function App() {
   const history = useHistory();
@@ -52,6 +54,7 @@ function App() {
           path='/signup'
           render={(props) => <Signup {...props} setLoggedIn={setLoggedIn} />}
         />
+        <PrivateRoute exact path='/dashboard' component={Dashboard} />
       </PlantContext.Provider>
     </div>
   );
