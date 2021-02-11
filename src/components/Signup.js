@@ -77,55 +77,49 @@ export default function Signup({ history }) {
 
   return (
     <StyledDiv>
-      <nav>
-        <Link to='/login'>Sign In</Link>
-        <Link to='/signup' class='signup'>
-          Sign up
-        </Link>
-      </nav>
-
       <section>
-        <h2>Create An Account!</h2>
-        <p>
-          Keep forgetting to water your plants? No problem. We have the
-          solution. Sign up today.
-        </p>
+        <nav>
+          <Link to='/login'>Sign In</Link>
+          <Link to='/signup' className='signup'>
+            Sign up
+          </Link>
+        </nav>
 
-        <form onSubmit={handleSubmit}>
-          <div>
-            <label htmlFor='username'>Username:</label>
+        <div className='form-main'>
+          <h2>Create An Account!</h2>
+          <p>
+            Keep forgetting to water your plants? No problem. We have the
+            solution. Sign up today.
+          </p>
+
+          <form onSubmit={handleSubmit}>
             <input
               type='text'
-              id='username'
               name='username'
               placeholder='Username'
               value={formState.username}
               onChange={inputChange}
             />
-          </div>
 
-          {/* Shows an error on screen if username field is empty */}
-          {errors ? errors.username : null}
-
-          <div>
-            <label htmlFor='password'>Password:</label>
             <input
               type='password'
-              id='password'
               name='password'
               placeholder='Password'
               value={formState.password}
               onChange={inputChange}
             />
-          </div>
+
+            <button disabled={buttonDisabled} type='submit'>
+              Create Account
+            </button>
+          </form>
+
+          {/* Shows an error on screen if username field is empty */}
+          <div className='error'>{errors ? errors.username : null}</div>
 
           {/* Shows an error on screen if password field is empty */}
-          {errors ? errors.password : null}
-
-          <button disabled={buttonDisabled} type='submit'>
-            Create Account
-          </button>
-        </form>
+          <div className='error'>{errors ? errors.password : null}</div>
+        </div>
       </section>
     </StyledDiv>
   );

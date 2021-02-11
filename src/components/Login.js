@@ -82,55 +82,49 @@ export default function Login({ history }) {
 
   return (
     <StyledDiv>
-      <nav>
-        <Link to='/login' class='signin'>
-          Sign In
-        </Link>
-        <Link to='/signup'>Sign up</Link>
-      </nav>
-
       <section>
-        <h2>Welcome Back!</h2>
-        <p>
-          Your plants missed you. Don't forget to check up on how they are
-          doing.
-        </p>
+        <nav>
+          <Link to='/login' className='signin'>
+            Sign In
+          </Link>
+          <Link to='/signup'>Sign up</Link>
+        </nav>
 
-        <form onSubmit={handleSubmit}>
-          <div>
-            <label htmlFor='username'>Username:</label>
+        <div className='form-main'>
+          <h2>Welcome Back!</h2>
+          <p>
+            Your plants missed you. Don't forget to check up on how they are
+            doing.
+          </p>
+
+          <form onSubmit={handleSubmit}>
             <input
               type='text'
-              id='username'
               name='username'
               value={formState.username}
               onChange={inputChange}
-              placeholder='Enter your Username'
+              placeholder='Username'
             />
-          </div>
 
-          {/* Shows an error on screen if username field is empty */}
-          {errors ? errors.username : null}
-
-          <div>
-            <label htmlFor='password'>Password:</label>
             <input
               type='password'
-              id='password'
               name='password'
               value={formState.password}
               onChange={inputChange}
-              placeholder='Enter your Password'
+              placeholder='Password'
             />
-          </div>
+
+            <button disabled={buttonDisabled} type='submit'>
+              Sign In
+            </button>
+          </form>
+
+          {/* Shows an error on screen if username field is empty */}
+          <div className='error'>{errors ? errors.username : null}</div>
 
           {/* Shows an error on screen if password field is empty */}
-          {errors ? errors.password : null}
-
-          <button disabled={buttonDisabled} type='submit'>
-            Sign In
-          </button>
-        </form>
+          <div className='error'>{errors ? errors.password : null}</div>
+        </div>
       </section>
     </StyledDiv>
   );
