@@ -4,7 +4,7 @@ import * as yup from 'yup';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 import { StyledDiv } from './LoginSignup-styling';
 
-export default function Signup({ history, setLoggedIn }) {
+export default function Signup({ history }) {
   const [buttonDisabled, setButtonDisabled] = useState(true);
 
   const [formState, setFormState] = useState({
@@ -34,7 +34,6 @@ export default function Signup({ history, setLoggedIn }) {
     axiosWithAuth()
       .post('/auth/register', formState)
       .then(() => {
-        setLoggedIn(true);
         history.push('/login');
 
         setFormState({

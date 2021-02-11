@@ -4,7 +4,7 @@ import * as yup from 'yup';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 import { StyledDiv } from './LoginSignup-styling';
 
-export default function Login({ history, setLoggedIn }) {
+export default function Login({ history }) {
   const [buttonDisabled, setButtonDisabled] = useState(true);
 
   const [formState, setFormState] = useState({
@@ -38,7 +38,6 @@ export default function Login({ history, setLoggedIn }) {
         window.localStorage.setItem('token', res.data.token);
         window.localStorage.setItem('id', res.data.user.id);
 
-        setLoggedIn(true);
         setFormState({
           username: '',
           password: '',

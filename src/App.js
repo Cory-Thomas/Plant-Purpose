@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import 'normalize.css';
 import { Home } from './components/Home';
-import { Route, Link, useHistory } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
 import { PrivateRoute } from './components/PrivateRoute';
 import GlobalStyles from './styles/GlobalStyles';
 import Typography from './styles/Typography';
@@ -11,49 +11,17 @@ import Signup from './components/Signup';
 import { Dashboard } from './components/Dashboard';
 
 function App() {
-  const history = useHistory();
-  const [loggedIn, setLoggedIn] = useState(false);
   const [plantId, setPlantId] = useState();
-
-  const handleLogout = () => {
-    localStorage.clear();
-    setLoggedIn(false);
-    history.push('/');
-  };
 
   return (
     <div>
       <GlobalStyles />
       <Typography />
 
-      <nav>
-        <Link to='/'>Home</Link>
-        {/* 
-          logic that sees if the logginIn state is false or true.
-          If false then show the Logout nav item,
-          If true then show the Login nav item
-        */}
-        {loggedIn ? (
-          <Link to='/' onClick={handleLogout}>
-            Logout
-          </Link>
-        ) : (
-          <Link to='/login'>Login</Link>
-        )}
-      </nav>
-
       <PlantContext.Provider value={{ plantId, setPlantId }}>
         <Route exact path='/' component={Home}></Route>
-        <Route
-          exact
-          path='/login'
-          render={(props) => <Login {...props} setLoggedIn={setLoggedIn} />}
-        />
-        <Route
-          exact
-          path='/signup'
-          render={(props) => <Signup {...props} setLoggedIn={setLoggedIn} />}
-        />
+        <Route exact path='/login' render={(props) => <Login {...props} />} />
+        <Route exact path='/signup' render={(props) => <Signup {...props} />} />
         <PrivateRoute exact path='/dashboard' component={Dashboard} />
       </PlantContext.Provider>
     </div>
