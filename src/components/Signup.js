@@ -80,7 +80,9 @@ export default function Signup({ history, setLoggedIn }) {
     <StyledDiv>
       <nav>
         <Link to='/login'>Sign In</Link>
-        <Link to='/signup'>Sign up</Link>
+        <Link to='/signup' class='signup'>
+          Sign up
+        </Link>
       </nav>
 
       <section>

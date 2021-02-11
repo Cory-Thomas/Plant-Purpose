@@ -84,7 +84,9 @@ export default function Login({ history, setLoggedIn }) {
   return (
     <StyledDiv>
       <nav>
-        <Link to='/login'>Sign In</Link>
+        <Link to='/login' class='signin'>
+          Sign In
+        </Link>
         <Link to='/signup'>Sign up</Link>
       </nav>
 

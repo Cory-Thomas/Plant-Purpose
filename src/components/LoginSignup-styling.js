@@ -9,12 +9,22 @@ export const StyledDiv = styled.div`
   nav {
     display: flex;
     justify-content: space-around;
+    align-items: center;
     padding: 5px;
     font-size: 2.4rem;
     line-height: 36px;
     letter-spacing: 0.08em;
     text-transform: capitalize;
     border-bottom: 3px solid #e4d5c7;
+  }
+
+  // allows the nav item's green border to overlap the nav's tan'ish border
+  .signin,
+  .signup {
+    border-bottom: 3px solid green;
+    padding: 6px;
+    margin: -8px;
+    font-weight: bold;
   }
 
   section {
