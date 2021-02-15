@@ -23,6 +23,7 @@ export const StyledDiv = styled.div`
       align-items: center;
 
       h1 {
+        margin-left: 15px;
         font-size: 2.4rem;
       }
     }

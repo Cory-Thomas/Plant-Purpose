@@ -7,6 +7,8 @@ import { MyPlants } from './MyPlants';
 import { Notes } from './Notes';
 import { Calendar } from './Calendar';
 import { AddPlant } from './AddPlant';
+import { Leaf } from '@styled-icons/fa-solid/Leaf';
+import { Logout } from '@styled-icons/heroicons-outline/Logout';
 
 export const Dashboard = () => {
   const history = useHistory();
@@ -20,7 +22,7 @@ export const Dashboard = () => {
     <StyledDiv>
       <header>
         <div>
-          <img src='#' alt='logo' />
+          <Leaf />
           <h1>
             Plant
             <br />
@@ -29,6 +31,7 @@ export const Dashboard = () => {
         </div>
 
         <Link to='/' onClick={handleLogout}>
+          <Logout className='icon' />
           Logout
         </Link>
       </header>
