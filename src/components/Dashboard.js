@@ -11,10 +11,20 @@ export const Dashboard = () => {
 
   return (
     <>
-      <p>Dashboard</p>
-      <Link to='/' onClick={handleLogout}>
-        Logout
-      </Link>
+      <header>
+        <div>
+          <img src='#' alt='logo' />
+          <h1>
+            Plant
+            <br />
+            Purpose
+          </h1>
+        </div>
+
+        <Link to='/' onClick={handleLogout}>
+          Logout
+        </Link>
+      </header>
     </>
   );
 };
