@@ -1,6 +1,12 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { StyledDiv } from './Dashboard-styling';
+import { UserMenu } from './UserMenu';
+import { Tabs } from './Tabs';
+import { MyPlants } from './MyPlants';
+import { Notes } from './Notes';
+import { Calendar } from './Calendar';
+import { AddPlant } from './AddPlant';
 
 export const Dashboard = () => {
   const history = useHistory();
@@ -26,6 +32,15 @@ export const Dashboard = () => {
           Logout
         </Link>
       </header>
+
+      <main>
+        <UserMenu />
+        <Tabs />
+        <MyPlants />
+        <Notes />
+        <Calendar />
+        <AddPlant />
+      </main>
     </StyledDiv>
   );
 };
