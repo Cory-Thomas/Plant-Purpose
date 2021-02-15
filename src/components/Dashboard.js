@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
+import { StyledDiv } from './Dashboard-styling';
 
 export const Dashboard = () => {
   const history = useHistory();
@@ -10,7 +11,7 @@ export const Dashboard = () => {
   };
 
   return (
-    <>
+    <StyledDiv>
       <header>
         <div>
           <img src='#' alt='logo' />
@@ -25,6 +26,6 @@ export const Dashboard = () => {
           Logout
         </Link>
       </header>
-    </>
+    </StyledDiv>
   );
 };
