@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import * as yup from 'yup';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
+import { StyledDiv } from './LoginSignup-styling';
 
-export default function Signup({ history, setLoggedIn }) {
+export default function Signup({ history }) {
   const [buttonDisabled, setButtonDisabled] = useState(true);
 
   const [formState, setFormState] = useState({
@@ -33,7 +34,6 @@ export default function Signup({ history, setLoggedIn }) {
     axiosWithAuth()
       .post('/auth/register', formState)
       .then(() => {
-        setLoggedIn(true);
         history.push('/login');
 
         setFormState({
@@ -76,48 +76,51 @@ export default function Signup({ history, setLoggedIn }) {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <h2>Sign-up</h2>
+    <StyledDiv>
+      <section>
+        <nav>
+          <Link to='/login'>Sign In</Link>
+          <Link to='/signup' className='signup'>
+            Sign up
+          </Link>
+        </nav>
 
-        <div>
-          <label htmlFor='username'>Username:</label>
-          <input
-            type='text'
-            id='username'
-            name='username'
-            placeholder='Username'
-            value={formState.username}
-            onChange={inputChange}
-          />
+        <div className='form-main'>
+          <h2>Create An Account!</h2>
+          <p>
+            Keep forgetting to water your plants? No problem. We have the
+            solution. Sign up today.
+          </p>
+
+          <form onSubmit={handleSubmit}>
+            <input
+              type='text'
+              name='username'
+              placeholder='Username'
+              value={formState.username}
+              onChange={inputChange}
+            />
+
+            <input
+              type='password'
+              name='password'
+              placeholder='Password'
+              value={formState.password}
+              onChange={inputChange}
+            />
+
+            <button disabled={buttonDisabled} type='submit'>
+              Create Account
+            </button>
+          </form>
+
+          {/* Shows an error on screen if username field is empty */}
+          <div className='error'>{errors ? errors.username : null}</div>
+
+          {/* Shows an error on screen if password field is empty */}
+          <div className='error'>{errors ? errors.password : null}</div>
         </div>
-
-        {/* Shows an error on screen if username field is empty */}
-        {errors ? errors.username : null}
-
-        <div>
-          <label htmlFor='password'>Password:</label>
-          <input
-            type='password'
-            id='password'
-            name='password'
-            placeholder='Password'
-            value={formState.password}
-            onChange={inputChange}
-          />
-        </div>
-
-        {/* Shows an error on screen if password field is empty */}
-        {errors ? errors.password : null}
-
-        <button disabled={buttonDisabled} type='submit'>
-          Sign up
-        </button>
-
-        <div>
-          Already have an account? <Link to='/Login'>Log in</Link>
-        </div>
-      </form>
-    </div>
+      </section>
+    </StyledDiv>
   );
 }
