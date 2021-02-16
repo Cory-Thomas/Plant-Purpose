@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { StyledDiv } from './Dashboard-styling';
+import { StyledDiv } from './styles/Dashboard-styling';
 import { UserMenu } from './UserMenu';
 import { Tabs } from './Tabs';
 import { MyPlants } from './MyPlants';

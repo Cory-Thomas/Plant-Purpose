@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import 'normalize.css';
-import { Home } from './components/Home';
+import { Home } from './components/Home/Home';
 import { Route } from 'react-router-dom';
-import { PrivateRoute } from './components/PrivateRoute';
+import { PrivateRoute } from './components/PrivateRoute/PrivateRoute';
 import GlobalStyles from './styles/GlobalStyles';
 import Typography from './styles/Typography';
 import { PlantContext } from './components/context/PlantContext';
-import Login from './components/Login';
-import Signup from './components/Signup';
-import { Dashboard } from './components/Dashboard';
+import Login from './components/Login-Signup/Login';
+import Signup from './components/Login-Signup/Signup';
+import { Dashboard } from './components/Dashboard/Dashboard';
 
 function App() {
   const [plantId, setPlantId] = useState();
