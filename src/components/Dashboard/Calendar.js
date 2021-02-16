@@ -1,9 +1,10 @@
 import React from 'react';
+import { StyledDiv } from './styles/Calendar-styling';
 
 export const Calendar = () => {
   return (
-    <>
-      <div class='calendar'>Calendar</div>
-    </>
+    <StyledDiv className='calendar'>
+      <div className='calendarSize'>Calendar</div>
+    </StyledDiv>
   );
 };

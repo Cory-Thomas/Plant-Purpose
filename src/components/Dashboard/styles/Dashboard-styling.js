@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 export const StyledDiv = styled.div`
   width: 100%;
-  height: 100vh;
   background-color: var(--background);
 
   header {
@@ -30,20 +29,18 @@ export const StyledDiv = styled.div`
   }
 
   main {
-    height: 88vh;
     display: grid;
     grid-template-areas:
-      'user tabs tabs tabs calendar calendar'
-      'user plants plants plants calendar calendar'
-      'user plants plants plants addPlants addPlants'
-      'user notes notes notes addPlants addPlants';
+      'user tabs tabs calendar'
+      'user plants plants calendar'
+      'user plants plants addPlants'
+      'user notes notes addPlants';
     gap: 30px;
     margin: 30px;
+    padding-bottom: 40px;
 
     div {
-      background-color: var(--font-white);
       border-radius: 4px;
-      padding: 10px;
     }
 
     .userMenu {

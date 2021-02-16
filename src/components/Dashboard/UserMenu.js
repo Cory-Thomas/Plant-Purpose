@@ -31,7 +31,7 @@ export const UserMenu = () => {
           Tasks
         </div>
 
-        <div>
+        <div className='notesItem'>
           <SpeakerNotes className='icon' />
           Notes
         </div>

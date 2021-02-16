@@ -31,7 +31,7 @@ export const Dashboard = () => {
         </div>
 
         <Link to='/' onClick={handleLogout}>
-          <Logout className='icon' />
+          <Logout />
           Logout
         </Link>
       </header>

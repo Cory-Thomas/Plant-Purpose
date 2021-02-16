@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 
 export const StyledDiv = styled.div`
+  background-color: var(--font-white);
+  padding: 10px;
+
   .userInfo {
     display: flex;
     flex-direction: column;
@@ -12,5 +15,18 @@ export const StyledDiv = styled.div`
     h3 {
       margin: 15px 0;
     }
+  }
+
+  section div {
+    padding: 12px;
+
+    .icon {
+      margin-right: 5px;
+    }
+  }
+  .notesItem {
+    border-bottom: 3px solid var(--background);
+    padding-bottom: 15px;
+    margin-bottom: 15px;
   }
 `;

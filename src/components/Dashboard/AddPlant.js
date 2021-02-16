@@ -1,9 +1,13 @@
 import React from 'react';
+import { StyledDiv } from './styles/AddPlant-styling';
+import { PlusCircle } from '@styled-icons/bootstrap/PlusCircle';
 
 export const AddPlant = () => {
   return (
-    <>
-      <div class='addPlant'>Add Plant</div>
-    </>
+    <StyledDiv className='addPlant'>
+      <img src='#' />
+      <PlusCircle className='icon' />
+      <div>Add Plants</div>
+    </StyledDiv>
   );
 };
