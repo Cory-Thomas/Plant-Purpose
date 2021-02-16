@@ -38,6 +38,10 @@ const GlobalStyles = createGlobalStyle`
   .button-secondary:focus {
     background-color: var(--secondary);
   }
+
+  .icon {
+    width: 30px;
+  }
 `;
 
 export default GlobalStyles;
