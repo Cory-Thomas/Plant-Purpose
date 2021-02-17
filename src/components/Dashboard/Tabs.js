@@ -10,19 +10,19 @@ export const Tabs = () => {
     <StyledDiv className='tabs'>
       <div className='tab'>
         <Plant className='icon' />
-        Plants
+        <p className='middle'>0</p> <p>Plants</p>
       </div>
       <div className='tab'>
         <CalendarCheck className='icon' />
-        Tasks
+        <p className='middle'>0</p> <p>Tasks</p>
       </div>
       <div className='tab'>
         <Notifications className='icon' />
-        Notification
+        <p className='middle'>0</p> <p>Notification</p>
       </div>
       <div className='tab'>
         <SpeakerNotes className='icon' />
-        Notes
+        <p className='middle'>0</p> <p>Notes</p>
       </div>
     </StyledDiv>
   );

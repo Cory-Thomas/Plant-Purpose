@@ -22,7 +22,7 @@ export const Dashboard = () => {
     <StyledDiv>
       <header>
         <div>
-          <Leaf />
+          <Leaf className='leafIcon' />
           <h1>
             Plant
             <br />

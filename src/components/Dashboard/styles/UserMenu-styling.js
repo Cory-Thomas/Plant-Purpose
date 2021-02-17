@@ -11,22 +11,28 @@ export const StyledDiv = styled.div`
     padding-top: 15px;
     font-size: 1.8rem;
     border-bottom: 3px solid var(--background);
+    margin-bottom: 11px;
 
     h3 {
       margin: 15px 0;
+      font-size: 1.8rem;
+      line-height: 27px;
+      letter-spacing: 0.08em;
     }
   }
 
   section div {
-    padding: 12px;
+    padding: 13px;
+    line-height: 18px;
+    letter-spacing: 0.08em;
 
     .icon {
-      margin-right: 5px;
+      margin-right: 15px;
     }
   }
   .notesItem {
     border-bottom: 3px solid var(--background);
-    padding-bottom: 15px;
+    padding-bottom: 20px;
     margin-bottom: 15px;
   }
 `;

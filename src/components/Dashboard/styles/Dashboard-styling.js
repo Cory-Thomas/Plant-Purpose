@@ -16,15 +16,25 @@ export const StyledDiv = styled.div`
     align-items: center;
 
     div {
-      width: 150px;
+      width: 170px;
       height: 50px;
       display: flex;
       justify-content: space-between;
       align-items: center;
 
       h1 {
-        margin-left: 15px;
+        margin-left: 7px;
         font-size: 2.4rem;
+        color: var(--primary);
+        font-weight: 300;
+        line-height: 27px;
+        text-align: right;
+        letter-spacing: 0.08em;
+        text-transform: capitalize;
+      }
+
+      .leafIcon {
+        color: var(--primary);
       }
     }
   }

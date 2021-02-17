@@ -6,6 +6,18 @@ export const StyledDiv = styled.div`
 
   h2 {
     margin: 0;
+    font-size: 1.8rem;
+    line-height: 27px;
+    letter-spacing: 0.08em;
+  }
+
+  h3 {
+    font-size: 1.8rem;
+    line-height: 27px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.08em;
+    color: var(--font-secondary);
   }
 
   .plantGallery {

@@ -7,7 +7,21 @@ export const StyledDiv = styled.div`
   justify-content: center;
   align-items: center;
 
+  img {
+    width: 190px;
+    border-radius: 4px;
+  }
+
   .icon {
-    margin: 30px 0;
+    margin: 35px 0;
+  }
+
+  div {
+    font-size: 1.8rem;
+    line-height: 27px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.08em;
   }
 `;

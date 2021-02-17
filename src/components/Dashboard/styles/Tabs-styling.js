@@ -6,14 +6,28 @@ export const StyledDiv = styled.div`
 
   div {
     background-color: var(--font-white);
-    width: 130px;
-    height: 120px;
+    width: 120px;
+    height: 110px;
+    box-sizing: border-box;
   }
 
   .tab {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
+    padding-bottom: 14px;
+
+    .icon {
+      color: var(--font-secondary);
+    }
+
+    p {
+      margin: 0;
+    }
+
+    .middle {
+      padding: 5px 0;
+    }
   }
 `;
