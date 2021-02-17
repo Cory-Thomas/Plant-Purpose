@@ -5,7 +5,7 @@ import { PlusCircle } from '@styled-icons/bootstrap/PlusCircle';
 export const AddPlant = () => {
   return (
     <StyledDiv className='addPlant'>
-      <img src='#' />
+      <img src='#' alt=' ' />
       <PlusCircle className='icon' />
       <div>Add Plants</div>
     </StyledDiv>

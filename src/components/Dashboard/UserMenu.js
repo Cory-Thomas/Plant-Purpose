@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { axiosWithAuth } from '../../utils/axiosWithAuth';
 import { Dashboard } from '@styled-icons/material/Dashboard';
 import { Plant } from '@styled-icons/remix-fill/Plant';
 import { CalendarCheck } from '@styled-icons/boxicons-solid/CalendarCheck';
@@ -8,11 +9,24 @@ import { Notifications } from '@styled-icons/material/Notifications';
 import { StyledDiv } from './styles/UserMenu-styling';
 
 export const UserMenu = () => {
+  const [username, setUsername] = useState('');
+
+  useEffect(() => {
+    axiosWithAuth()
+      .get(`/users/${localStorage.getItem('id')}`)
+      .then((res) => {
+        setUsername(res.data.username);
+      })
+      .catch((err) => {
+        console.log('Username error: ', err);
+      });
+  }, []);
+
   return (
     <StyledDiv className='userMenu'>
-      <div class='userInfo'>
-        <img src='#' alt='profile avatar' />
-        <h3>Username</h3>
+      <div className='userInfo'>
+        <img src='#' alt=' ' />
+        <h3>{username}</h3>
       </div>
 
       <section>

@@ -7,15 +7,15 @@ export const MyPlants = () => {
       <h2>My Plants</h2>
       <div className='plantGallery'>
         <div>
-          <img src='#' />
+          <img src='#' alt=' ' />
           <h3>plant name</h3>
         </div>
         <div>
-          <img src='#' />
+          <img src='#' alt=' ' />
           <h3>plant name</h3>
         </div>
         <div>
-          <img src='#' />
+          <img src='#' alt=' ' />
           <h3>plant name</h3>
         </div>
       </div>
