@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
 import { Dashboard } from '@styled-icons/material/Dashboard';
 import { Plant } from '@styled-icons/remix-fill/Plant';
@@ -31,35 +32,47 @@ export const UserMenu = () => {
       </div>
 
       <section>
-        <div>
-          <Dashboard className='icon' />
-          Dashboard
-        </div>
+        <Link to='/dashboard'>
+          <div>
+            <Dashboard className='icon' />
+            Dashboard
+          </div>
+        </Link>
 
-        <div>
-          <Plant className='icon' />
-          My Plants
-        </div>
+        <Link to='/myplants'>
+          <div>
+            <Plant className='icon' />
+            My Plants
+          </div>
+        </Link>
 
-        <div>
-          <CalendarCheck className='icon' />
-          Tasks
-        </div>
+        <Link to='/tasks'>
+          <div>
+            <CalendarCheck className='icon' />
+            Tasks
+          </div>
+        </Link>
 
-        <div className='notesItem'>
-          <SpeakerNotes className='icon' />
-          Notes
-        </div>
+        <Link to='/notes'>
+          <div className='notesItem'>
+            <SpeakerNotes className='icon' />
+            Notes
+          </div>
+        </Link>
 
-        <div>
-          <Settings className='icon' />
-          Settings
-        </div>
+        <Link to='/settings'>
+          <div>
+            <Settings className='icon' />
+            Settings
+          </div>
+        </Link>
 
-        <div>
-          <Notifications className='icon' />
-          Notifications
-        </div>
+        <Link to='/notifications'>
+          <div>
+            <Notifications className='icon' />
+            Notifications
+          </div>
+        </Link>
       </section>
     </StyledDiv>
   );
