@@ -7,6 +7,7 @@ import { SpeakerNotes } from '@styled-icons/material-rounded/SpeakerNotes';
 import { Settings } from '@styled-icons/ionicons-sharp/Settings';
 import { Notifications } from '@styled-icons/material/Notifications';
 import { StyledDiv } from './styles/UserMenu-styling';
+import { UserCircle } from '@styled-icons/boxicons-solid/UserCircle';
 
 export const UserMenu = () => {
   const [username, setUsername] = useState('');
@@ -25,7 +26,7 @@ export const UserMenu = () => {
   return (
     <StyledDiv className='userMenu'>
       <div className='userInfo'>
-        <img src='#' alt=' ' />
+        <UserCircle className='icon' />
         <h3>{username}</h3>
       </div>
 
