@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { axiosWithAuth } from '../../utils/axiosWithAuth';
 import { Dashboard } from '@styled-icons/material/Dashboard';
 import { Plant } from '@styled-icons/remix-fill/Plant';
 import { CalendarCheck } from '@styled-icons/boxicons-solid/CalendarCheck';
@@ -9,15 +8,15 @@ import { Settings } from '@styled-icons/ionicons-sharp/Settings';
 import { Notifications } from '@styled-icons/material/Notifications';
 import { StyledDiv } from './styles/UserMenu-styling';
 import { UserCircle } from '@styled-icons/boxicons-solid/UserCircle';
+import { getUsername } from '../../api';
 
 export const UserMenu = () => {
   const [username, setUsername] = useState('');
 
   useEffect(() => {
-    axiosWithAuth()
-      .get(`/users/${localStorage.getItem('id')}`)
+    getUsername()
       .then((res) => {
-        setUsername(res.data.username);
+        setUsername(res.username);
       })
       .catch((err) => {
         console.log('Username error: ', err);
