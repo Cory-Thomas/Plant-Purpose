@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import * as yup from 'yup';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
-import { StyledDiv } from './LoginSignup-styling';
+import { StyledDiv } from './styles/LoginSignup-styling';
 
-export default function Signup({ history }) {
+export default function Login({ history }) {
   const [buttonDisabled, setButtonDisabled] = useState(true);
 
   const [formState, setFormState] = useState({
@@ -32,45 +32,50 @@ export default function Signup({ history }) {
     e.preventDefault();
 
     axiosWithAuth()
-      .post('/auth/register', formState)
-      .then(() => {
-        history.push('/login');
+      .post('/auth/login', formState)
+      .then((res) => {
+        window.localStorage.clear();
+        window.localStorage.setItem('token', res.data.token);
+        window.localStorage.setItem('id', res.data.user.id);
 
         setFormState({
           username: '',
           password: '',
         });
+
+        history.push('/dashboard');
       })
       .catch((err) => {
-        console.log('Signup error: ', err);
+        console.log('login error: ', err);
       });
   };
 
-  const inputChange = (e) => {
-    e.persist();
+  const inputChange = (event) => {
+    event.persist();
 
-    setFormState({
+    const newFormData = {
       ...formState,
-      [e.target.name]: e.target.value,
-    });
+      [event.target.name]: event.target.value,
+    };
 
-    validateChange(e);
+    validateChange(event);
+    setFormState(newFormData);
   };
 
-  const validateChange = (e) => {
+  const validateChange = (event) => {
     yup
-      .reach(formSchema, e.target.name)
-      .validate(e.target.value)
+      .reach(formSchema, event.target.name)
+      .validate(event.target.value)
       .then(() => {
         setErrors({
           ...errors,
-          [e.target.name]: '',
+          [event.target.name]: '',
         });
       })
       .catch((err) => {
         setErrors({
           ...errors,
-          [e.target.name]: err.errors[0],
+          [event.target.name]: err.errors[0],
         });
       });
   };
@@ -79,38 +84,38 @@ export default function Signup({ history }) {
     <StyledDiv>
       <section>
         <nav>
-          <Link to='/login'>Sign In</Link>
-          <Link to='/signup' className='signup'>
-            Sign up
+          <Link to='/login' className='signin'>
+            Sign In
           </Link>
+          <Link to='/signup'>Sign up</Link>
         </nav>
 
         <div className='form-main'>
-          <h2>Create An Account!</h2>
+          <h2>Welcome Back!</h2>
           <p>
-            Keep forgetting to water your plants? No problem. We have the
-            solution. Sign up today.
+            Your plants missed you. Don't forget to check up on how they are
+            doing.
           </p>
 
           <form onSubmit={handleSubmit}>
             <input
               type='text'
               name='username'
-              placeholder='Username'
               value={formState.username}
               onChange={inputChange}
+              placeholder='Username'
             />
 
             <input
               type='password'
               name='password'
-              placeholder='Password'
               value={formState.password}
               onChange={inputChange}
+              placeholder='Password'
             />
 
             <button disabled={buttonDisabled} type='submit'>
-              Create Account
+              Sign In
             </button>
           </form>
 

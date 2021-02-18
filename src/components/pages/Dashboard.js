@@ -1,12 +1,12 @@
 import React from 'react';
 import { StyledDiv } from './styles/Dashboard-styling';
-import { Header } from './Header';
-import { UserMenu } from './UserMenu';
-import { Tabs } from './Tabs';
-import { MyPlants } from './MyPlants';
-import { Notes } from './Notes';
-import { Calendar } from './Calendar';
-import { AddPlant } from './AddPlant';
+import { Header } from '../common/Header';
+import { UserMenu } from '../common/UserMenu';
+import { Tabs } from '../common/Tabs';
+import { MyPlants } from '../common/MyPlants';
+import { Notes } from '../common/Notes';
+import { Calendar } from '../common/Calendar';
+import { AddPlant } from '../common/AddPlant';
 
 export const Dashboard = () => {
   return (
