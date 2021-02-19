@@ -40,6 +40,12 @@ const GlobalStyles = createGlobalStyle`
   .icon {
     width: 30px;
   }
+
+  .modalButton {
+    width: 100px;
+    margin-top: 20px;
+    padding: 5px;
+  }
 `;
 
 export default GlobalStyles;
