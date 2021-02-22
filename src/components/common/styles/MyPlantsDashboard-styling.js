@@ -37,10 +37,12 @@ export const StyledDiv = styled.div`
     div {
       padding: 10px 0;
 
-      img {
+      img,
+      svg {
         width: 215px;
         height: 240px;
         border-radius: 4px;
+        background-color: var(--background);
       }
 
       h3 {

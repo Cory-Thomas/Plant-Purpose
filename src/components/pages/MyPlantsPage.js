@@ -14,7 +14,7 @@ export const MyPlantsPage = () => {
 
       <main>
         <UserMenu />
-        <MyPlants plantUpdate={plantUpdate} />
+        <MyPlants setPlantUpdate={setPlantUpdate} plantUpdate={plantUpdate} />
         <AddPlant setPlantUpdate={setPlantUpdate} plantUpdate={plantUpdate} />
       </main>
     </StyledDiv>
