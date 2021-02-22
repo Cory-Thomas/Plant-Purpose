@@ -32,42 +32,42 @@ export const UserMenu = () => {
 
       <section>
         <Link to='/dashboard'>
-          <div>
+          <div className='item-dashboard'>
             <Dashboard className='icon' />
             Dashboard
           </div>
         </Link>
 
         <Link to='/myplants'>
-          <div>
+          <div className='item-myPlants'>
             <Plant className='icon' />
             My Plants
           </div>
         </Link>
 
         <Link to='/tasks'>
-          <div>
+          <div className='item-tasks'>
             <CalendarCheck className='icon' />
             Tasks
           </div>
         </Link>
 
         <Link to='/notes'>
-          <div className='notesItem'>
+          <div className='notesItem item-notes'>
             <SpeakerNotes className='icon' />
             Notes
           </div>
         </Link>
 
         <Link to='/settings'>
-          <div>
+          <div className='item-settings'>
             <Settings className='icon' />
             Settings
           </div>
         </Link>
 
         <Link to='/notifications'>
-          <div>
+          <div className='item-notifications'>
             <Notifications className='icon' />
             Notifications
           </div>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { StyledDiv } from './styles/MyPlants-styling';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
+import { ImageNotSupported } from '@styled-icons/material/ImageNotSupported';
 
 export const MyPlants = ({ plantUpdate }) => {
   const [plants, setPlants] = useState([]);
@@ -23,24 +24,19 @@ export const MyPlants = ({ plantUpdate }) => {
     <StyledDiv className='myPlants'>
       <h2>My Plants</h2>
       <div className='plantGallery'>
-        {/* Only shows first three plants if there are more than 3 plants */}
-        {plants.length > 3
-          ? plants
-              .reverse()
-              .slice(0, 3)
-              .map((plant) => {
-                return (
-                  <div key={plant.id}>
-                    <img
-                      src={plant.image_url}
-                      alt=' '
-                      style={{ width: '30%' }}
-                    />
-                    <h3>{plant.nickname}</h3>
-                  </div>
-                );
-              })
-          : null}
+        {plants.reverse().map((plant) => {
+          return (
+            <div key={plant.id}>
+              {plant.image_url === '' ? (
+                <ImageNotSupported />
+              ) : (
+                <img src={plant.image_url} alt=' ' />
+              )}
+
+              <h3>{plant.nickname}</h3>
+            </div>
+          );
+        })}
       </div>
     </StyledDiv>
   );

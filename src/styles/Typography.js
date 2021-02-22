@@ -5,6 +5,7 @@ const Typography = createGlobalStyle`
         --primary: #397D54;
         --secondary: #E4D5C7;
         --darktone : #186049;
+        --lighttone: #CBEAD1;
         --background: #F8F6F5;
         --font-primary: #212429;
         --font-secondary: #495057;

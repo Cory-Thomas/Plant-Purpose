@@ -22,6 +22,11 @@ export const StyledDiv = styled.div`
 
     .userMenu {
       grid-area: user;
+      max-width: 300px;
+
+      .item-dashboard {
+        background-color: var(--lighttone);
+      }
     }
 
     .tabs {

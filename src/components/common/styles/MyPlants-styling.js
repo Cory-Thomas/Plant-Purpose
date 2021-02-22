@@ -4,26 +4,26 @@ export const StyledDiv = styled.div`
   background-color: var(--font-white);
   padding: 20px;
 
-  h2 {
-    margin: 0;
-    font-size: 1.8rem;
-    line-height: 27px;
-    letter-spacing: 0.08em;
-  }
-
-  h3 {
-    font-size: 1.8rem;
-    line-height: 27px;
-    display: flex;
-    align-items: center;
-    letter-spacing: 0.08em;
-    color: var(--font-secondary);
-  }
-
   .plantGallery {
     display: flex;
-    justify-content: space-around;
-    align-items: center;
-    height: 200px;
+    flex-wrap: wrap;
+
+    div {
+      width: 270px;
+      height: 300px;
+      background-color: var(--highlight);
+      margin: 15px auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+
+      img {
+        box-sizing: border-box;
+        width: 260px;
+        height: 250px;
+        padding: 10px 8px;
+      }
+    }
   }
 `;

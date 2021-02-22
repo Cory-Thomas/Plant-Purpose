@@ -18,6 +18,11 @@ export const StyledDiv = styled.div`
 
     .userMenu {
       grid-area: user;
+      max-width: 300px;
+
+      .item-notes {
+        background-color: var(--lighttone);
+      }
     }
 
     .notes {

@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 export const StyledDiv = styled.div`
   width: 100%;
-  height: 100vh;
   background-color: var(--background);
 
   main {
@@ -22,6 +21,11 @@ export const StyledDiv = styled.div`
 
     .userMenu {
       grid-area: user;
+      max-width: 300px;
+
+      .item-myPlants {
+        background-color: var(--lighttone);
+      }
     }
 
     .myPlants {
@@ -30,6 +34,7 @@ export const StyledDiv = styled.div`
 
     .addPlant {
       grid-area: addPlants;
+      padding: 30px;
     }
   }
 `;
