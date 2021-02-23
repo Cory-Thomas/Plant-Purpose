@@ -2,6 +2,7 @@ import React from 'react';
 import { StyledDiv } from './styles/Notifications-styling';
 import { Header } from '../common/Header';
 import { UserMenu } from '../common/UserMenu';
+import { WIP } from '../common/WIP';
 
 export const Notifications = () => {
   return (
@@ -10,7 +11,7 @@ export const Notifications = () => {
 
       <main>
         <UserMenu />
-        Notifications
+        <WIP />
       </main>
     </StyledDiv>
   );
