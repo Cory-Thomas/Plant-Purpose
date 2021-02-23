@@ -10,6 +10,7 @@ export const StyledDiv = styled.div`
 
     h2 {
       font-size: 2.4rem;
+      margin-top: 15px;
     }
 
     .fc-button {
