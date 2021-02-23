@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { StyledDiv } from './styles/MyPlants-styling';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
 import { ImageNotSupported } from '@styled-icons/material/ImageNotSupported';
+import { CloseOutline } from '@styled-icons/evaicons-outline/CloseOutline';
 import Modal from 'react-modal';
 import { PlantEditForm } from './PlantEditForm';
 
@@ -24,34 +25,46 @@ export const MyPlants = ({ plantUpdate, setPlantUpdate }) => {
   }
 
   useEffect(() => {
+    let mounted = true;
+
     axiosWithAuth()
       .get(`/plants/user/${localStorage.getItem('id')}`)
       .then((res) => {
-        setPlants(res.data);
+        if (mounted) {
+          setPlants(res.data);
+        }
       })
       .catch((err) => {
         console.log('Plants error: ', err);
       });
-  }, [plantUpdate]);
+
+    return function cleanup() {
+      mounted = false;
+    };
+  }, [plants]);
 
   return (
     <StyledDiv className='myPlants'>
       <h2>My Plants</h2>
       <div className='plantGallery'>
-        {plants.map((plant) => {
-          return (
-            <div key={plant.id} onClick={() => openModal(plant)}>
-              {/* if plant image url doesn't exist then show a no image icon */}
-              {plant.image_url === '' ? (
-                <ImageNotSupported />
-              ) : (
-                <img src={plant.image_url} alt=' ' />
-              )}
+        {plants.length === 0 ? (
+          <div className='noPlants'>No Plants Currently Uploaded</div>
+        ) : (
+          plants.map((plant) => {
+            return (
+              <div key={plant.id} onClick={() => openModal(plant)}>
+                {/* if plant image url doesn't exist then show a no image icon */}
+                {plant.image_url === '' ? (
+                  <ImageNotSupported />
+                ) : (
+                  <img src={plant.image_url} alt=' ' />
+                )}
 
-              <h3>{plant.nickname}</h3>
-            </div>
-          );
-        })}
+                <h3>{plant.nickname}</h3>
+              </div>
+            );
+          })
+        )}
 
         <Modal
           isOpen={modalIsOpen}
@@ -60,8 +73,8 @@ export const MyPlants = ({ plantUpdate, setPlantUpdate }) => {
           ariaHideApp={false}
           style={{
             content: {
-              width: '50%',
-              height: '50%',
+              width: '60%',
+              height: '630px',
               margin: '0 auto',
               backgroundColor: 'white',
               display: 'flex',
@@ -73,28 +86,43 @@ export const MyPlants = ({ plantUpdate, setPlantUpdate }) => {
             },
           }}
         >
+          <CloseOutline onClick={closeModal} className='exitLogo' />
+
           {showForm === true ? (
             <PlantEditForm
               plant={selectedPlant}
               showForm={showForm}
               setShowForm={setShowForm}
+              closeModal={closeModal}
             />
           ) : (
-            <div>
+            <div className='plantCard'>
               {/* if plant image url doesn't exist then show a no image icon */}
               {selectedPlant.image_url === '' ? (
                 <ImageNotSupported />
               ) : (
                 <img src={selectedPlant.image_url} alt=' ' />
               )}
-              <h3>{selectedPlant.nickname}</h3>
-              <button onClick={() => setShowForm(!showForm)}>edit plant</button>
+              <div className='plantDetails'>
+                <div>
+                  <span>Name: </span>
+                  {selectedPlant.nickname}
+                </div>
+
+                <div>
+                  <span>Species: </span>
+                  {selectedPlant.species}
+                </div>
+
+                <div>
+                  <span>Water Frequency: </span>Once every{' '}
+                  {selectedPlant.h2o_frequency} days
+                </div>
+              </div>
+
+              <button onClick={() => setShowForm(!showForm)}>Edit Plant</button>
             </div>
           )}
-
-          <button onClick={closeModal} className='modalButton'>
-            close
-          </button>
         </Modal>
       </div>
     </StyledDiv>

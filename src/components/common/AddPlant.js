@@ -43,7 +43,11 @@ export const AddPlant = ({ plantUpdate, setPlantUpdate }) => {
           },
         }}
       >
-        <AddPlantForm />
+        <AddPlantForm
+          closeModal={closeModal}
+          plantUpdate={plantUpdate}
+          setPlantUpdate={setPlantUpdate}
+        />
 
         <button onClick={closeModal} className='modalButton'>
           close

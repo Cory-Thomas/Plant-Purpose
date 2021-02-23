@@ -3,7 +3,7 @@ import { axiosWithAuth } from '../../utils/axiosWithAuth';
 import * as yup from 'yup';
 import { StyledForm } from './styles/AddPlantForm-styling';
 
-export const AddPlantForm = () => {
+export const AddPlantForm = ({ closeModal, plantUpdate, setPlantUpdate }) => {
   const [buttonDisabled, setButtonDisabled] = useState(true);
 
   const [values, setValues] = useState({
@@ -37,14 +37,11 @@ export const AddPlantForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Submitting ', values);
     const userId = localStorage.getItem('id');
-    console.log('userId', userId);
 
     axiosWithAuth()
       .post(`/plants/user/${userId}`, values)
-      .then((res) => {
-        console.log('AddPlants res: ', res);
+      .then(() => {
         setValues({
           nickname: '',
           species: '',
@@ -55,6 +52,9 @@ export const AddPlantForm = () => {
       .catch((err) => {
         console.log('AddPlants error: ', err);
       });
+
+    closeModal();
+    setPlantUpdate(plantUpdate + 1);
   };
 
   const inputChange = (e) => {

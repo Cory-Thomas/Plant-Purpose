@@ -9,18 +9,23 @@ export const MyPlantsDashboard = ({ plantUpdate }) => {
   const [plants, setPlants] = useState([]);
 
   useEffect(() => {
+    let mounted = true;
+
     axiosWithAuth()
       .get(`/plants/user/${localStorage.getItem('id')}`)
       .then((res) => {
-        setPlants(res.data);
-        console.log('here');
+        if (mounted) {
+          setPlants(res.data);
+        }
       })
       .catch((err) => {
         console.log('Plants error: ', err);
       });
-  }, [plantUpdate]);
 
-  console.log(plants);
+    return function cleanup() {
+      mounted = false;
+    };
+  }, [plants]);
 
   return (
     <StyledDiv className='myPlants'>
@@ -35,23 +40,27 @@ export const MyPlantsDashboard = ({ plantUpdate }) => {
 
       <div className='plantGallery'>
         {/* Only shows the newest three plants */}
-        {plants
-          .reverse()
-          .slice(0, 2)
-          .map((plant) => {
-            return (
-              <div key={plant.id}>
-                {/* if plant image url doesn't exist then show a no image icon */}
-                {plant.image_url === '' ? (
-                  <ImageNotSupported />
-                ) : (
-                  <img src={plant.image_url} alt=' ' />
-                )}
+        {plants.length === 0 ? (
+          <div className='noPlants'>No Plants Currently Uploaded</div>
+        ) : (
+          plants
+            .reverse()
+            .slice(0, 2)
+            .map((plant) => {
+              return (
+                <div key={plant.id}>
+                  {/* if plant image url doesn't exist then show a no image icon */}
+                  {plant.image_url === '' ? (
+                    <ImageNotSupported />
+                  ) : (
+                    <img src={plant.image_url} alt=' ' />
+                  )}
 
-                <h3>{plant.nickname}</h3>
-              </div>
-            );
-          })}
+                  <h3>{plant.nickname}</h3>
+                </div>
+              );
+            })
+        )}
       </div>
     </StyledDiv>
   );

@@ -41,10 +41,45 @@ const GlobalStyles = createGlobalStyle`
     width: 30px;
   }
 
-  .modalButton {
-    width: 100px;
-    margin-top: 20px;
-    padding: 5px;
+  .exitLogo {
+    width: 35px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 5px 10px;
+  }
+
+  .plantCard {
+    background-color: var(--background);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    border-radius: 9px;
+
+    img {
+      width: 70%;
+      border-radius: 5px;
+    }
+
+    .plantDetails {
+      margin: 10px;
+      font-size: 2rem;
+
+      div {
+        margin: 5px;
+
+        span {
+        font-weight: 600;
+        }
+      }
+    }
+
+    button {
+      width: 100px;
+      padding: 5px;
+    }
   }
 `;
 

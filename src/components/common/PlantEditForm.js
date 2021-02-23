@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
 import { StyledForm } from './styles/PlantEditForm-styling';
+import { ArrowBack } from '@styled-icons/boxicons-regular/ArrowBack';
 
-export const PlantEditForm = ({ plant, showForm, setShowForm }) => {
+export const PlantEditForm = ({ plant, showForm, setShowForm, closeModal }) => {
   const [values, setValues] = useState({
     nickname: `${plant.nickname}`,
     species: `${plant.species}`,
@@ -12,14 +13,11 @@ export const PlantEditForm = ({ plant, showForm, setShowForm }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Submitting ', values);
     const plantId = plant.id;
-    console.log('Plant ID', plantId, plant);
 
     axiosWithAuth()
       .put(`/plants/${plantId}`, values)
-      .then((res) => {
-        console.log('Edit plants res: ', res);
+      .then(() => {
         setValues({
           nickname: '',
           species: '',
@@ -30,6 +28,29 @@ export const PlantEditForm = ({ plant, showForm, setShowForm }) => {
       .catch((err) => {
         console.log('Edit plants error: ', err);
       });
+
+    closeModal();
+  };
+
+  const handleDelete = (e) => {
+    const plantId = plant.id;
+    e.preventDefault();
+
+    axiosWithAuth()
+      .delete(`/plants/${plantId}`)
+      .then(() => {
+        setValues({
+          nickname: '',
+          species: '',
+          h2o_frequency: '',
+          image_url: '',
+        });
+      })
+      .catch((err) => {
+        console.log('Delete Plant err: ', err);
+      });
+
+    closeModal();
   };
 
   const inputChange = (e) => {
@@ -44,6 +65,8 @@ export const PlantEditForm = ({ plant, showForm, setShowForm }) => {
 
   return (
     <StyledForm onSubmit={handleSubmit}>
+      <ArrowBack onClick={() => setShowForm(!showForm)} />
+
       <input
         type='text'
         name='nickname'
@@ -80,8 +103,12 @@ export const PlantEditForm = ({ plant, showForm, setShowForm }) => {
         onChange={inputChange}
       />
 
-      <button>Edit plant!</button>
-      <button onClick={() => setShowForm(!showForm)}>Back to Plant Info</button>
+      <div>
+        <button className='edit'>Edit Plant!</button>
+        <button className='delete' onClick={handleDelete}>
+          Delete Plant!
+        </button>
+      </div>
     </StyledForm>
   );
 };

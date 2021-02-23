@@ -34,6 +34,16 @@ export const StyledDiv = styled.div`
     justify-content: space-around;
     align-items: center;
 
+    .noPlants {
+      width: 100%;
+      height: 140px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2.4rem;
+      background-color: var(--background);
+    }
+
     div {
       padding: 10px 0;
 

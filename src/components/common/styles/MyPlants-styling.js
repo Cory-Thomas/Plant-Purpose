@@ -8,10 +8,18 @@ export const StyledDiv = styled.div`
     display: flex;
     flex-wrap: wrap;
 
+    .noPlants {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2.4rem;
+    }
+
     div {
       width: 270px;
       height: 300px;
-      background-color: var(--highlight);
+      background-color: var(--background);
       margin: 15px auto;
       display: flex;
       flex-direction: column;
@@ -23,6 +31,7 @@ export const StyledDiv = styled.div`
         width: 260px;
         height: 250px;
         padding: 10px 8px;
+        border-radius: 12px;
       }
     }
   }
