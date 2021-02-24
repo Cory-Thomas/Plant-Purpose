@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const StyledDiv = styled.div`
   background-color: var(--font-white);
+  z-index: 0;
 
   .fc {
     /* the calendar root */

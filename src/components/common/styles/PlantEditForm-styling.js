@@ -17,6 +17,7 @@ export const StyledForm = styled.form`
     position: absolute;
     top: 0;
     left: 0;
+    cursor: pointer;
   }
 
   input {

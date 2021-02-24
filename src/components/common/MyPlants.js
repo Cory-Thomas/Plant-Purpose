@@ -46,13 +46,18 @@ export const MyPlants = ({ plantUpdate, setPlantUpdate }) => {
   return (
     <StyledDiv className='myPlants'>
       <h2>My Plants</h2>
+
       <div className='plantGallery'>
         {plants.length === 0 ? (
           <div className='noPlants'>No Plants Currently Uploaded</div>
         ) : (
           plants.map((plant) => {
             return (
-              <div key={plant.id} onClick={() => openModal(plant)}>
+              <div
+                className='plant'
+                key={plant.id}
+                onClick={() => openModal(plant)}
+              >
                 {/* if plant image url doesn't exist then show a no image icon */}
                 {plant.image_url === '' ? (
                   <ImageNotSupported />

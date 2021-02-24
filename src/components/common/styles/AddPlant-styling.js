@@ -10,10 +10,12 @@ export const StyledDiv = styled.div`
   img {
     width: 190px;
     border-radius: 4px;
+    cursor: pointer;
   }
 
   .icon {
     margin: 35px 0;
+    cursor: pointer;
   }
 
   div {
@@ -23,5 +25,6 @@ export const StyledDiv = styled.div`
     align-items: center;
     text-align: center;
     letter-spacing: 0.08em;
+    cursor: pointer;
   }
 `;

@@ -48,6 +48,7 @@ const GlobalStyles = createGlobalStyle`
     top: 0;
     right: 0;
     margin: 5px 10px;
+    cursor: pointer;
   }
 
   .plantCard {
