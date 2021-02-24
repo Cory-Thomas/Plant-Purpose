@@ -43,6 +43,10 @@ const Typography = createGlobalStyle`
         color: var(--font);
     }
 
+    a:link {
+        color: var(--font);
+    }
+
     a:hover {
         color: var(--highlight);
     }
