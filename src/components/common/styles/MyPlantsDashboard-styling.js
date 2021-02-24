@@ -34,6 +34,16 @@ export const StyledDiv = styled.div`
     justify-content: space-around;
     align-items: center;
 
+    .plant {
+      cursor: pointer;
+      padding: 10px;
+      border-radius: 5px;
+    }
+
+    .plant:hover {
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    }
+
     .noPlants {
       width: 100%;
       height: 140px;

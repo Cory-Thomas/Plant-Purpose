@@ -62,7 +62,7 @@ export const MyPlants = ({ plantUpdate, setPlantUpdate }) => {
                 {plant.image_url === '' ? (
                   <ImageNotSupported />
                 ) : (
-                  <img src={plant.image_url} alt=' ' />
+                  <img src={plant.image_url} alt='plant' />
                 )}
 
                 <h3>{plant.nickname}</h3>
@@ -106,7 +106,7 @@ export const MyPlants = ({ plantUpdate, setPlantUpdate }) => {
               {selectedPlant.image_url === '' ? (
                 <ImageNotSupported />
               ) : (
-                <img src={selectedPlant.image_url} alt=' ' />
+                <img src={selectedPlant.image_url} alt='plant' />
               )}
               <div className='plantDetails'>
                 <div>

@@ -82,13 +82,13 @@ export default function Signup({ history }) {
       <header>
         <Link to='/'>
           <div className='logo'>
-            <img src={plantLogo} alt=' ' />
+            <img src={plantLogo} alt='plant logo' />
             <h1>Plant Purpose</h1>
           </div>
         </Link>
       </header>
 
-      <img src={background} alt=' ' className='background' />
+      <img src={background} alt='plant background' className='background' />
 
       <section>
         <nav>

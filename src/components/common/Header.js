@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { StyledHeader } from './styles/Header-styling';
-import { Leaf } from '@styled-icons/fa-solid/Leaf';
+import plantLogo from '../../assets/plantLogo.svg';
 import { Logout } from '@styled-icons/heroicons-outline/Logout';
 
 export const Header = () => {
@@ -15,7 +15,7 @@ export const Header = () => {
   return (
     <StyledHeader>
       <div>
-        <Leaf className='leafIcon' />
+        <img src={plantLogo} alt='Plant Purpose logo' />
         <h1>
           Plant
           <br />

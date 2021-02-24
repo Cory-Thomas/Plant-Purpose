@@ -17,7 +17,7 @@ export const Home = () => {
     <StyledDiv>
       <header>
         <div className='logo'>
-          <img src={plantLogo} alt=' ' />
+          <img src={plantLogo} alt='Plant Purpose logo' />
           <h1>Plant Purpose</h1>
         </div>
 
@@ -47,27 +47,31 @@ export const Home = () => {
         </section>
 
         <div>
-          <img src={plantPrimary} alt=' ' className='plant' />
-          <img src={vectorBackground} alt=' ' />
+          <img src={plantPrimary} alt='plant' className='plant' />
+          <img src={vectorBackground} alt='background for plant' />
         </div>
       </main>
 
       <section className='features'>
         <div>
-          <img src={plantFeature} alt=' ' className='plantFeature' />
+          <img
+            src={plantFeature}
+            alt='plant background'
+            className='plantFeature'
+          />
         </div>
         <div>
-          <img src={wateringCan} alt=' ' />
+          <img src={wateringCan} alt='watering can icon' />
           <h3>Feature 1 Details</h3>
           <p>Voluptate ullamco Voluptate ullamco Voluptate ullamco</p>
         </div>
         <div>
-          <img src={plant} alt=' ' />
+          <img src={plant} alt='plant icon' />
           <h3>Feature 2 Details</h3>
           <p>Voluptate ullamco Voluptate ullamco Voluptate ullamco</p>
         </div>
         <div>
-          <img src={plantNotes} alt=' ' />
+          <img src={plantNotes} alt='notes icon' />
           <h3>Feature 3 Details</h3>
           <p>Voluptate ullamco Voluptate ullamco Voluptate ullamco</p>
         </div>
@@ -76,9 +80,9 @@ export const Home = () => {
       <footer>
         <div>
           <div>
-            <img src={facebook} alt=' ' />
-            <img src={twitter} alt=' ' />
-            <img src={instagram} alt=' ' />
+            <img src={facebook} alt='facebook icon' />
+            <img src={twitter} alt='twitter icon' />
+            <img src={instagram} alt='instagram icon' />
           </div>
           <div>
             <span>Privacy Policy</span>
