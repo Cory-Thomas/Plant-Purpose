@@ -2,8 +2,6 @@ import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyles = createGlobalStyle`
   html {
-    width: 100vw;
-    height: 100vh;
     background-color: var(--white);
   }
   
@@ -20,6 +18,7 @@ const GlobalStyles = createGlobalStyle`
     background-color: var(--primary);
     border-radius: 4px;
     border: 0px;
+    cursor: pointer;
   }
 
   button:hover, .button-secondary:hover {
@@ -37,6 +36,52 @@ const GlobalStyles = createGlobalStyle`
 
   .button-secondary:focus {
     background-color: var(--secondary);
+  }
+
+  .icon {
+    width: 30px;
+  }
+
+  .exitLogo {
+    width: 35px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 5px 10px;
+    cursor: pointer;
+  }
+
+  .plantCard {
+    background-color: var(--background);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    border-radius: 9px;
+
+    img {
+      width: 70%;
+      border-radius: 5px;
+    }
+
+    .plantDetails {
+      margin: 10px;
+      font-size: 2rem;
+
+      div {
+        margin: 5px;
+
+        span {
+        font-weight: 600;
+        }
+      }
+    }
+
+    button {
+      width: 100px;
+      padding: 5px;
+    }
   }
 `;
 
