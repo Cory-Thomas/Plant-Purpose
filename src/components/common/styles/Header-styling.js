@@ -11,7 +11,7 @@ export const StyledHeader = styled.header`
   align-items: center;
 
   div {
-    width: 170px;
+    width: 140px;
     height: 50px;
     display: flex;
     justify-content: space-between;
@@ -26,10 +26,6 @@ export const StyledHeader = styled.header`
       text-align: right;
       letter-spacing: 0.08em;
       text-transform: capitalize;
-    }
-
-    .leafIcon {
-      color: var(--primary);
     }
   }
 `;

@@ -20,9 +20,11 @@ export const AddPlant = ({ plantUpdate, setPlantUpdate }) => {
 
   return (
     <StyledDiv className='addPlant'>
-      <img src={pot} alt=' ' onClick={openModal} />
-      <PlusCircle className='icon' onClick={openModal} />
-      <div onClick={openModal}>Add Plants</div>
+      <div className='addPlantCard' onClick={openModal}>
+        <img src={pot} alt='empty pot' />
+        <PlusCircle className='icon' />
+        <div>Add Plants</div>
+      </div>
 
       <Modal
         isOpen={modalIsOpen}

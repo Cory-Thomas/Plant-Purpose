@@ -36,6 +36,8 @@ export const StyledDiv = styled.div`
 
     .plant {
       cursor: pointer;
+      padding: 10px;
+      border-radius: 5px;
     }
 
     .plant:hover {
