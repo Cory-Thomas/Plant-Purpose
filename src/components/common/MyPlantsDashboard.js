@@ -4,9 +4,27 @@ import { StyledDiv } from './styles/MyPlantsDashboard-styling';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
 import { ChevronRight } from '@styled-icons/boxicons-regular/ChevronRight';
 import { ImageNotSupported } from '@styled-icons/material/ImageNotSupported';
+import { CloseOutline } from '@styled-icons/evaicons-outline/CloseOutline';
+import { PlantEditForm } from './PlantEditForm';
+import Modal from 'react-modal';
 
 export const MyPlantsDashboard = ({ plantUpdate }) => {
   const [plants, setPlants] = useState([]);
+  const [modalIsOpen, setIsOpen] = React.useState(false);
+  const [selectedPlant, setSelectedPlant] = useState([]);
+  const [showForm, setShowForm] = useState(false);
+
+  function openModal(props) {
+    setSelectedPlant(props);
+    setIsOpen(true);
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+    setSelectedPlant([]);
+    // setPlantUpdate(plantUpdate + 1);
+    setShowForm(false);
+  }
 
   useEffect(() => {
     let mounted = true;
@@ -48,7 +66,11 @@ export const MyPlantsDashboard = ({ plantUpdate }) => {
             .slice(0, 2)
             .map((plant) => {
               return (
-                <div key={plant.id}>
+                <div
+                  onClick={() => openModal(plant)}
+                  key={plant.id}
+                  className='plant'
+                >
                   {/* if plant image url doesn't exist then show a no image icon */}
                   {plant.image_url === '' ? (
                     <ImageNotSupported />
@@ -61,6 +83,65 @@ export const MyPlantsDashboard = ({ plantUpdate }) => {
               );
             })
         )}
+
+        <Modal
+          isOpen={modalIsOpen}
+          onRequestClose={closeModal}
+          contentLabel='Example Modal'
+          ariaHideApp={false}
+          style={{
+            content: {
+              width: '60%',
+              height: '630px',
+              margin: '0 auto',
+              backgroundColor: 'white',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              alignItems: 'center',
+              border: '2px var(--primary) solid',
+              borderRadius: '10px',
+            },
+          }}
+        >
+          <CloseOutline onClick={closeModal} className='exitLogo' />
+
+          {showForm === true ? (
+            <PlantEditForm
+              plant={selectedPlant}
+              showForm={showForm}
+              setShowForm={setShowForm}
+              closeModal={closeModal}
+            />
+          ) : (
+            <div className='plantCard'>
+              {/* if plant image url doesn't exist then show a no image icon */}
+              {selectedPlant.image_url === '' ? (
+                <ImageNotSupported />
+              ) : (
+                <img src={selectedPlant.image_url} alt=' ' />
+              )}
+              <div className='plantDetails'>
+                <div>
+                  <span>Name: </span>
+                  {selectedPlant.nickname}
+                </div>
+
+                <div>
+                  <span>Species: </span>
+                  {selectedPlant.species}
+                </div>
+
+                <div>
+                  <span>Water Frequency: </span>Once every{' '}
+                  {selectedPlant.h2o_frequency} days
+                </div>
+              </div>
+
+              <button onClick={() => setShowForm(!showForm)}>Edit Plant</button>
+            </div>
+          )}
+        </Modal>
       </div>
     </StyledDiv>
   );
