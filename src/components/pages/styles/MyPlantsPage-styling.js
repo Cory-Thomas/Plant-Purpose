@@ -37,4 +37,21 @@ export const StyledDiv = styled.div`
       padding: 30px;
     }
   }
+
+  @media (max-width: 1080px) {
+    main {
+      grid-template-areas:
+        'user addPlants '
+        'plants plants ';
+    }
+  }
+
+  @media (max-width: 780px) {
+    main {
+      grid-template-areas:
+        'user'
+        'plants '
+        'addPlants';
+    }
+  }
 `;

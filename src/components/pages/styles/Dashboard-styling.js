@@ -47,5 +47,42 @@ export const StyledDiv = styled.div`
     .addPlant {
       grid-area: addPlants;
     }
+
+    .wip {
+      grid-area: wip;
+    }
+  }
+
+  @media (max-width: 1260px) {
+    main {
+      grid-template-areas:
+        'user tabs tabs'
+        'user plants plants'
+        'user calendar  addPlants'
+        'user notes notes';
+    }
+  }
+
+  @media (max-width: 1060px) {
+    main {
+      grid-template-areas:
+        'user tabs '
+        'user plants '
+        'user addPlants'
+        'user calendar'
+        'user notes';
+    }
+  }
+
+  @media (max-width: 910px) {
+    main {
+      grid-template-areas:
+        'user'
+        'tabs '
+        'plants '
+        'addPlants'
+        'calendar'
+        'notes';
+    }
   }
 `;

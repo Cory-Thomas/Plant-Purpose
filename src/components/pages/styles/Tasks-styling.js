@@ -37,4 +37,12 @@ export const StyledDiv = styled.div`
       grid-area: addPlants;
     }
   }
+
+  @media (max-width: 700px) {
+    main {
+      grid-template-areas:
+        'user'
+        'wip';
+    }
+  }
 `;

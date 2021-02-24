@@ -29,4 +29,12 @@ export const StyledDiv = styled.div`
       grid-area: notes;
     }
   }
+
+  @media (max-width: 780px) {
+    main {
+      grid-template-areas:
+        'user'
+        'notes';
+    }
+  }
 `;
