@@ -76,11 +76,13 @@ export const StyledDiv = styled.div`
         letter-spacing: 0.08em;
       }
 
-      button {
-        width: 300px;
-        padding: 15px 0;
+      a {
         margin-right: 100px;
         margin-bottom: 150px;
+        button {
+          width: 300px;
+          padding: 15px 0;
+        }
       }
     }
 
@@ -191,6 +193,7 @@ export const StyledDiv = styled.div`
         button {
           margin: 10px auto;
           margin-bottom: 40px;
+          margin-left: 100px;
         }
       }
     }

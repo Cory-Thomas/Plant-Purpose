@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import * as yup from 'yup';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
 import { StyledDiv } from './styles/LoginSignup-styling';
+import background from '../../assets/signInUpBG.svg';
+import plantLogo from '../../assets/plantLogo.svg';
 
 export default function Signup({ history }) {
   const [buttonDisabled, setButtonDisabled] = useState(true);
@@ -77,6 +79,17 @@ export default function Signup({ history }) {
 
   return (
     <StyledDiv>
+      <header>
+        <Link to='/'>
+          <div className='logo'>
+            <img src={plantLogo} alt=' ' />
+            <h1>Plant Purpose</h1>
+          </div>
+        </Link>
+      </header>
+
+      <img src={background} alt=' ' className='background' />
+
       <section>
         <nav>
           <Link to='/login'>Sign In</Link>

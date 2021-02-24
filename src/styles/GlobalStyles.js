@@ -18,6 +18,7 @@ const GlobalStyles = createGlobalStyle`
     background-color: var(--primary);
     border-radius: 4px;
     border: 0px;
+    cursor: pointer;
   }
 
   button:hover, .button-secondary:hover {
