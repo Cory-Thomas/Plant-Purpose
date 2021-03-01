@@ -38,7 +38,7 @@ export const Home = () => {
             <span>Plant Purpose</span>
           </h2>
           <p>
-            A plant mangement system, which helps plant owners take better care
+            A plant management system, which helps plant owners take better care
             of their plants
           </p>
           <Link to='/signup'>
