@@ -12,6 +12,7 @@ export const StyledDiv = styled.div`
     font-size: 1.8rem;
     border-bottom: 3px solid var(--background);
     margin-bottom: 11px;
+    min-width: 220px;
 
     .icon {
       width: 65px;
