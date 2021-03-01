@@ -52,6 +52,29 @@ export default function Login({ history }) {
       });
   };
 
+  const handleGuestSubmit = (e) => {
+    e.preventDefault();
+    const guestCredentials = { username: 'guest', password: 'guest' };
+
+    axiosWithAuth()
+      .post('/auth/login', guestCredentials)
+      .then((res) => {
+        window.localStorage.clear();
+        window.localStorage.setItem('token', res.data.token);
+        window.localStorage.setItem('id', res.data.user.id);
+
+        setFormState({
+          username: '',
+          password: '',
+        });
+
+        history.push('/dashboard');
+      })
+      .catch((err) => {
+        console.log('Guest login error: ', err);
+      });
+  };
+
   const inputChange = (event) => {
     event.persist();
 
@@ -137,6 +160,10 @@ export default function Login({ history }) {
 
           {/* Shows an error on screen if password field is empty */}
           <div className='error'>{errors ? errors.password : null}</div>
+        </div>
+
+        <div className='guestSignin'>
+          <button onClick={handleGuestSubmit}>Quick Guest Sign In</button>
         </div>
       </section>
     </StyledDiv>
