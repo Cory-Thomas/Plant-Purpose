@@ -13,10 +13,10 @@ A plant management system, which helps plant owners take better care of their pl
 * Express
 
 ## Blog
-I wrote a blog going into detail about the Plant Purpose app
+I wrote a blog going into detail about the Plant Purpose app<br />
 [Blog Link](https://dev.to/corythomas/plant-purpose-4laa)
 
 ## Acknowledgments
 
-* Hanina Syed - Designer
+* Hanina Syed - Designer <br />
 Hanina Syed's LinkedIn: [LinkedIn Link](https://www.linkedin.com/in/hanina-syed-020321138/)
