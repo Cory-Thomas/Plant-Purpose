@@ -48,6 +48,8 @@ export const StyledDiv = styled.div`
     border-radius: 5px;
     margin-bottom: 170px;
     margin-right: 100px;
+    display: flex;
+    flex-direction: column;
   }
 
   nav {
@@ -131,6 +133,21 @@ export const StyledDiv = styled.div`
       height: 48px;
       margin: 10px;
       padding: 15px 5px;
+    }
+  }
+
+  .guestSignin {
+    width: 210px;
+    padding: 15px;
+    margin: 0 auto;
+    margin-top: 5px;
+    border-top: 1px solid var(--font-primary);
+    display: flex;
+    justify-content: center;
+
+    button {
+      width: 190px;
+      padding: 5px;
     }
   }
 
