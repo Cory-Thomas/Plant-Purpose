@@ -10,9 +10,9 @@ export const Calendar = () => {
         plugins={[dayGridPlugin]}
         initialView='dayGridMonth'
         headerToolbar={{
-          left: '',
+          left: 'prev',
           center: 'title',
-          right: 'prev,next',
+          right: 'next',
         }}
         events=''
       />

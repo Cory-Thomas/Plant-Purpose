@@ -17,5 +17,16 @@ export const StyledDiv = styled.div`
     .fc-button {
       padding: 5px;
     }
+
+    .fc-day-today {
+      background-color: var(--lighttone);
+    }
+
+    .fc-icon,
+    .fc-button {
+      background-color: white;
+      border: 0;
+      color: black;
+    }
   }
 `;
