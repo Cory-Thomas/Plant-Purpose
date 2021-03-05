@@ -7,7 +7,6 @@ export const PlantEditForm = ({ plant, showForm, setShowForm, closeModal }) => {
   const [values, setValues] = useState({
     nickname: `${plant.nickname}`,
     species: `${plant.species}`,
-    h2o_frequency: `${plant.h2o_frequency}`,
     image_url: `${plant.image_url}`,
   });
 
@@ -21,7 +20,6 @@ export const PlantEditForm = ({ plant, showForm, setShowForm, closeModal }) => {
         setValues({
           nickname: '',
           species: '',
-          h2o_frequency: '',
           image_url: '',
         });
       })
@@ -42,7 +40,6 @@ export const PlantEditForm = ({ plant, showForm, setShowForm, closeModal }) => {
         setValues({
           nickname: '',
           species: '',
-          h2o_frequency: '',
           image_url: '',
         });
       })
@@ -82,15 +79,6 @@ export const PlantEditForm = ({ plant, showForm, setShowForm, closeModal }) => {
         placeholder={`Current Species: ${plant.species}`}
         values={values.species}
         value={values.species}
-        onChange={inputChange}
-      />
-
-      <input
-        type='number'
-        name='h2o_frequency'
-        placeholder={`Current Watering Frequency: ${plant.h2o_frequency}`}
-        values={values.h2o_frequency}
-        value={values.h2o_frequency}
         onChange={inputChange}
       />
 
