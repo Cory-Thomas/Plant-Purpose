@@ -131,11 +131,6 @@ export const MyPlantsDashboard = ({ plantUpdate }) => {
                   <span>Species: </span>
                   {selectedPlant.species}
                 </div>
-
-                <div>
-                  <span>Water Frequency: </span>Once every{' '}
-                  {selectedPlant.h2o_frequency} days
-                </div>
               </div>
 
               <button onClick={() => setShowForm(!showForm)}>Edit Plant</button>

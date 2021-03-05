@@ -9,23 +9,18 @@ export const AddPlantForm = ({ closeModal, plantUpdate, setPlantUpdate }) => {
   const [values, setValues] = useState({
     nickname: '',
     species: '',
-    h2o_frequency: '',
     image_url: '',
   });
 
   const [errors, setErrors] = useState({
     nickname: '',
     species: '',
-    h2o_frequency: '',
     image_url: '',
   });
 
   const formSchema = yup.object().shape({
     nickname: yup.string().required(2, 'Plant name is a required field'),
     species: yup.string().required('Plant species is a required field'),
-    h2o_frequency: yup
-      .number()
-      .required('Water Frequency is a required field, and must be a number'),
     image_url: yup.string(),
   });
 
@@ -45,7 +40,6 @@ export const AddPlantForm = ({ closeModal, plantUpdate, setPlantUpdate }) => {
         setValues({
           nickname: '',
           species: '',
-          h2o_frequency: '',
           image_url: '',
         });
       })
@@ -102,14 +96,6 @@ export const AddPlantForm = ({ closeModal, plantUpdate, setPlantUpdate }) => {
         name='species'
         placeholder='Plant Species'
         values={values.species}
-        onChange={inputChange}
-      />
-
-      <input
-        type='number'
-        name='h2o_frequency'
-        placeholder='Water Frequency Per Week   [NUMBER]'
-        values={values.h2o_frequency}
         onChange={inputChange}
       />
 
