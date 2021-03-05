@@ -118,6 +118,7 @@ export const MyPlants = ({ plantUpdate, setPlantUpdate }) => {
                   <span>Species: </span>
                   {selectedPlant.species}
                 </div>
+              </div>
 
               <button onClick={() => setShowForm(!showForm)}>Edit Plant</button>
             </div>
