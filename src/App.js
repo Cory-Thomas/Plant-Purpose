@@ -1,6 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import 'normalize.css';
 import { Route } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { applyMiddleware, createStore } from 'redux';
+import thunk from 'redux-thunk';
+import reducer from './store/reducers';
 import GlobalStyles from './styles/GlobalStyles';
 import Typography from './styles/Typography';
 import { Home } from './components/pages/Home';
@@ -13,17 +17,16 @@ import { NotesPage } from './components/pages/NotesPage';
 import { Settings } from './components/pages/Settings';
 import { Notifications } from './components/pages/Notifications';
 import { PrivateRoute } from './components/PrivateRoute/PrivateRoute';
-import { PlantContext } from './components/context/PlantContext';
+
+const store = createStore(reducer, applyMiddleware(thunk));
 
 function App() {
-  const [plantId, setPlantId] = useState();
-
   return (
     <>
       <GlobalStyles />
       <Typography />
 
-      <PlantContext.Provider value={{ plantId, setPlantId }}>
+      <Provider store={store}>
         <Route exact path='/' component={Home}></Route>
         <Route exact path='/login' render={(props) => <Login {...props} />} />
         <Route exact path='/signup' render={(props) => <Signup {...props} />} />
@@ -33,7 +36,7 @@ function App() {
         <PrivateRoute exact path='/notes' component={NotesPage} />
         <PrivateRoute exact path='/settings' component={Settings} />
         <PrivateRoute exact path='/notifications' component={Notifications} />
-      </PlantContext.Provider>
+      </Provider>
     </>
   );
 }
