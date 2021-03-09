@@ -1,6 +1,7 @@
 import { axiosWithAuth } from '../../../utils/axiosWithAuth';
 
 export const ADD_USER = 'add-user';
+export const LOGOUT = 'logout';
 
 export const signin = (data, history) => {
   return (dispatch) => {
@@ -30,5 +31,14 @@ export const signup = (data, history) => {
       .catch((err) => {
         console.log('Signup error: ', err);
       });
+  };
+};
+
+export const logout = (history) => {
+  return (dispatch) => {
+    localStorage.clear();
+    history.push('/');
+
+    dispatch({ type: LOGOUT });
   };
 };

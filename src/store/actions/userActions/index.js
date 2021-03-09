@@ -1,1 +1,1 @@
-export { ADD_USER, signin, signup } from './userActions';
+export { ADD_USER, LOGOUT, signin, signup, logout } from './userActions';

@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyledDiv } from './styles/Notifications-styling';
-import { Header } from '../common/Header';
+import Header from '../common/Header';
 import { UserMenu } from '../common/UserMenu';
 import { WIP } from '../common/WIP';
 
