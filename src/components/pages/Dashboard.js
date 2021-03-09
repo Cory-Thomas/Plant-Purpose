@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { StyledDiv } from './styles/Dashboard-styling';
 import Header from '../common/Header';
-import { UserMenu } from '../common/UserMenu';
+import UserMenu from '../common/UserMenu';
 import { Tabs } from '../common/Tabs';
 import { MyPlantsDashboard } from '../common/MyPlantsDashboard';
 import { Notes } from '../common/Notes';

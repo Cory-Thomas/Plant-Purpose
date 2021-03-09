@@ -11,6 +11,7 @@ export const signin = (data, history) => {
         window.localStorage.clear();
         window.localStorage.setItem('token', res.data.token);
         window.localStorage.setItem('id', res.data.user.id);
+        window.localStorage.setItem('username', res.data.user.username);
         dispatch({ type: ADD_USER, payload: { data, id: res.data.user.id } });
 
         history.push('/dashboard');

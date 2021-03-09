@@ -2,15 +2,13 @@ import { ADD_USER } from '../actions/userActions';
 import { LOGOUT } from '../actions/userActions';
 
 const initialState = {
-  username: '',
-  id: '',
+  username: localStorage.getItem('username'),
+  id: localStorage.getItem('id'),
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_USER:
-      console.log('Payload: ', action.payload);
-      console.log('User state: ', state);
       return {
         ...state,
         username: action.payload.data.username,
