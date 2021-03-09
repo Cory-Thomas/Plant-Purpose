@@ -10,7 +10,7 @@ export const signin = (data, history) => {
         window.localStorage.clear();
         window.localStorage.setItem('token', res.data.token);
         window.localStorage.setItem('id', res.data.user.id);
-        dispatch({ type: ADD_USER, payload: data });
+        dispatch({ type: ADD_USER, payload: { data, id: res.data.user.id } });
 
         history.push('/dashboard');
       })
@@ -20,18 +20,15 @@ export const signin = (data, history) => {
   };
 };
 
-export const signup = (data) => {
-  console.log(data);
-  return (dispatch) => {
+export const signup = (data, history) => {
+  return () => {
     axiosWithAuth()
       .post('/auth/register', data)
-      .then((response) => {
-        console.log('signup response ', response.data.data);
-        dispatch({ type: ADD_USER, payload: response.data.data });
-        // history.push( "/login" );
+      .then(() => {
+        history.push('/login');
       })
-      .catch((error) => {
-        console.log('signup error ', error);
+      .catch((err) => {
+        console.log('Signup error: ', err);
       });
   };
 };

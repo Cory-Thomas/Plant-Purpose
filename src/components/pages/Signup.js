@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import * as yup from 'yup';
+import { connect } from 'react-redux';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
+import { signup } from '../../store/actions/userActions';
 import { StyledDiv } from './styles/LoginSignup-styling';
 import background from '../../assets/signInUpBG.svg';
 import plantLogo from '../../assets/plantLogo.svg';
 
-export default function Signup({ history }) {
+const Signup = ({ history, signup }) => {
   const [buttonDisabled, setButtonDisabled] = useState(true);
 
   const [formState, setFormState] = useState({
@@ -33,19 +35,12 @@ export default function Signup({ history }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    axiosWithAuth()
-      .post('/auth/register', formState)
-      .then(() => {
-        history.push('/login');
+    signup(formState, history);
 
-        setFormState({
-          username: '',
-          password: '',
-        });
-      })
-      .catch((err) => {
-        console.log('Signup error: ', err);
-      });
+    setFormState({
+      username: '',
+      password: '',
+    });
   };
 
   const handleGuestSubmit = (e) => {
@@ -163,4 +158,10 @@ export default function Signup({ history }) {
       </section>
     </StyledDiv>
   );
-}
+};
+
+const mapStateToProps = (state) => {
+  return {};
+};
+
+export default connect(mapStateToProps, { signup })(Signup);

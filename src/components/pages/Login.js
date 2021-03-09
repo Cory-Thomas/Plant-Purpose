@@ -35,25 +35,8 @@ const Login = ({ history, signin }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // axiosWithAuth()
-    //   .post('/auth/login', formState)
-    //   .then((res) => {
-    //     window.localStorage.clear();
-    //     window.localStorage.setItem('token', res.data.token);
-    //     window.localStorage.setItem('id', res.data.user.id);
-
-    //     setFormState({
-    //       username: '',
-    //       password: '',
-    //     });
-
-    //     history.push('/dashboard');
-    //   })
-    //   .catch((err) => {
-    //     console.log('login error: ', err);
-    //   });
-
     signin(formState, history);
+
     setFormState({
       username: '',
       password: '',

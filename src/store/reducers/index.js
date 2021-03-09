@@ -8,10 +8,11 @@ const initialState = {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_USER:
-      console.log(action.payload);
+      console.log('Payload: ', action.payload);
+      console.log('User state: ', state);
       return {
         ...state,
-        username: action.payload.username,
+        username: action.payload.data.username,
         id: action.payload.id,
       };
     default:
