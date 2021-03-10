@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import * as yup from 'yup';
-import { axiosWithAuth } from '../../utils/axiosWithAuth';
+import { connect } from 'react-redux';
+import { signin, guestSignin } from '../../store/actions/userActions';
 import { StyledDiv } from './styles/LoginSignup-styling';
 import background from '../../assets/signInUpBG.svg';
 import plantLogo from '../../assets/plantLogo.svg';
 
-export default function Login({ history }) {
+const Login = ({ history, signin, guestSignin }) => {
   const [buttonDisabled, setButtonDisabled] = useState(true);
 
   const [formState, setFormState] = useState({
@@ -33,46 +34,24 @@ export default function Login({ history }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    axiosWithAuth()
-      .post('/auth/login', formState)
-      .then((res) => {
-        window.localStorage.clear();
-        window.localStorage.setItem('token', res.data.token);
-        window.localStorage.setItem('id', res.data.user.id);
+    signin(formState, history);
 
-        setFormState({
-          username: '',
-          password: '',
-        });
-
-        history.push('/dashboard');
-      })
-      .catch((err) => {
-        console.log('login error: ', err);
-      });
+    setFormState({
+      username: '',
+      password: '',
+    });
   };
 
   const handleGuestSubmit = (e) => {
     e.preventDefault();
     const guestCredentials = { username: 'guest', password: 'guest' };
 
-    axiosWithAuth()
-      .post('/auth/login', guestCredentials)
-      .then((res) => {
-        window.localStorage.clear();
-        window.localStorage.setItem('token', res.data.token);
-        window.localStorage.setItem('id', res.data.user.id);
+    guestSignin(guestCredentials, history);
 
-        setFormState({
-          username: '',
-          password: '',
-        });
-
-        history.push('/dashboard');
-      })
-      .catch((err) => {
-        console.log('Guest login error: ', err);
-      });
+    setFormState({
+      username: '',
+      password: '',
+    });
   };
 
   const inputChange = (event) => {
@@ -168,4 +147,10 @@ export default function Login({ history }) {
       </section>
     </StyledDiv>
   );
-}
+};
+
+const mapStateToProps = (state) => {
+  return {};
+};
+
+export default connect(mapStateToProps, { signin, guestSignin })(Login);

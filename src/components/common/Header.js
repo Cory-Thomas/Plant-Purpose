@@ -1,15 +1,16 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { logout } from '../../store/actions/userActions';
 import { StyledHeader } from './styles/Header-styling';
 import plantLogo from '../../assets/plantLogo.svg';
 import { Logout } from '@styled-icons/heroicons-outline/Logout';
 
-export const Header = () => {
+const Header = ({ logout }) => {
   const history = useHistory();
 
   const handleLogout = () => {
-    localStorage.clear();
-    history.push('/');
+    logout(history);
   };
 
   return (
@@ -30,3 +31,9 @@ export const Header = () => {
     </StyledHeader>
   );
 };
+
+const mapStateToProps = (state) => {
+  return {};
+};
+
+export default connect(mapStateToProps, { logout })(Header);

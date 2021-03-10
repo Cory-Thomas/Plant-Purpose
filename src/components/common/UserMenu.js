@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import { Dashboard } from '@styled-icons/material/Dashboard';
 import { Plant } from '@styled-icons/remix-fill/Plant';
 import { CalendarCheck } from '@styled-icons/boxicons-solid/CalendarCheck';
@@ -8,21 +9,8 @@ import { Settings } from '@styled-icons/ionicons-sharp/Settings';
 import { Notifications } from '@styled-icons/material/Notifications';
 import { StyledDiv } from './styles/UserMenu-styling';
 import { UserCircle } from '@styled-icons/boxicons-solid/UserCircle';
-import { getUsername } from '../../api';
 
-export const UserMenu = () => {
-  const [username, setUsername] = useState('');
-
-  useEffect(() => {
-    getUsername()
-      .then((res) => {
-        setUsername(res.username);
-      })
-      .catch((err) => {
-        console.log('Username error: ', err);
-      });
-  }, []);
-
+const UserMenu = ({ username }) => {
   return (
     <StyledDiv className='userMenu'>
       <div className='userInfo'>
@@ -76,3 +64,11 @@ export const UserMenu = () => {
     </StyledDiv>
   );
 };
+
+const mapStateToProps = (state) => {
+  return {
+    username: state.username,
+  };
+};
+
+export default connect(mapStateToProps, {})(UserMenu);
