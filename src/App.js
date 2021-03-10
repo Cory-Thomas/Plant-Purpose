@@ -3,6 +3,9 @@ import 'normalize.css';
 import { Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { applyMiddleware, createStore } from 'redux';
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+import { PersistGate } from 'redux-persist/integration/react';
 import thunk from 'redux-thunk';
 import reducer from './store/reducers';
 import GlobalStyles from './styles/GlobalStyles';
@@ -18,7 +21,16 @@ import { Settings } from './components/pages/Settings';
 import { Notifications } from './components/pages/Notifications';
 import { PrivateRoute } from './components/PrivateRoute/PrivateRoute';
 
-const store = createStore(reducer, applyMiddleware(thunk));
+const persistConfig = {
+  key: 'root',
+  storage,
+};
+
+const persistedReducer = persistReducer(persistConfig, reducer);
+
+const store = createStore(persistedReducer, applyMiddleware(thunk));
+
+const persistor = persistStore(store);
 
 function App() {
   return (
@@ -27,15 +39,21 @@ function App() {
       <Typography />
 
       <Provider store={store}>
-        <Route exact path='/' component={Home}></Route>
-        <Route exact path='/login' render={(props) => <Login {...props} />} />
-        <Route exact path='/signup' render={(props) => <Signup {...props} />} />
-        <PrivateRoute exact path='/dashboard' component={Dashboard} />
-        <PrivateRoute exact path='/myplants' component={MyPlantsPage} />
-        <PrivateRoute exact path='/tasks' component={Tasks} />
-        <PrivateRoute exact path='/notes' component={NotesPage} />
-        <PrivateRoute exact path='/settings' component={Settings} />
-        <PrivateRoute exact path='/notifications' component={Notifications} />
+        <PersistGate loading={null} persistor={persistor}>
+          <Route exact path='/' component={Home}></Route>
+          <Route exact path='/login' render={(props) => <Login {...props} />} />
+          <Route
+            exact
+            path='/signup'
+            render={(props) => <Signup {...props} />}
+          />
+          <PrivateRoute exact path='/dashboard' component={Dashboard} />
+          <PrivateRoute exact path='/myplants' component={MyPlantsPage} />
+          <PrivateRoute exact path='/tasks' component={Tasks} />
+          <PrivateRoute exact path='/notes' component={NotesPage} />
+          <PrivateRoute exact path='/settings' component={Settings} />
+          <PrivateRoute exact path='/notifications' component={Notifications} />
+        </PersistGate>
       </Provider>
     </>
   );

@@ -2,8 +2,8 @@ import { ADD_USER } from '../actions/userActions';
 import { LOGOUT } from '../actions/userActions';
 
 const initialState = {
-  username: localStorage.getItem('username'),
-  id: localStorage.getItem('id'),
+  username: '',
+  id: '',
 };
 
 const reducer = (state = initialState, action) => {

@@ -10,14 +10,29 @@ export const signin = (data, history) => {
       .then((res) => {
         window.localStorage.clear();
         window.localStorage.setItem('token', res.data.token);
-        window.localStorage.setItem('id', res.data.user.id);
-        window.localStorage.setItem('username', res.data.user.username);
         dispatch({ type: ADD_USER, payload: { data, id: res.data.user.id } });
 
         history.push('/dashboard');
       })
       .catch((err) => {
         console.log('login error: ', err);
+      });
+  };
+};
+
+export const guestSignin = (data, history) => {
+  return (dispatch) => {
+    axiosWithAuth()
+      .post('/auth/login', data)
+      .then((res) => {
+        window.localStorage.clear();
+        window.localStorage.setItem('token', res.data.token);
+        dispatch({ type: ADD_USER, payload: { data, id: res.data.user.id } });
+
+        history.push('/dashboard');
+      })
+      .catch((err) => {
+        console.log('Guest login error: ', err);
       });
   };
 };

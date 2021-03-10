@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom';
 import * as yup from 'yup';
 import { connect } from 'react-redux';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
-import { signin } from '../../store/actions/userActions';
+import { signin, guestSignin } from '../../store/actions/userActions';
 import { StyledDiv } from './styles/LoginSignup-styling';
 import background from '../../assets/signInUpBG.svg';
 import plantLogo from '../../assets/plantLogo.svg';
 
-const Login = ({ history, signin }) => {
+const Login = ({ history, signin, guestSignin }) => {
   const [buttonDisabled, setButtonDisabled] = useState(true);
 
   const [formState, setFormState] = useState({
@@ -47,23 +47,12 @@ const Login = ({ history, signin }) => {
     e.preventDefault();
     const guestCredentials = { username: 'guest', password: 'guest' };
 
-    axiosWithAuth()
-      .post('/auth/login', guestCredentials)
-      .then((res) => {
-        window.localStorage.clear();
-        window.localStorage.setItem('token', res.data.token);
-        window.localStorage.setItem('id', res.data.user.id);
+    guestSignin(guestCredentials, history);
 
-        setFormState({
-          username: '',
-          password: '',
-        });
-
-        history.push('/dashboard');
-      })
-      .catch((err) => {
-        console.log('Guest login error: ', err);
-      });
+    setFormState({
+      username: '',
+      password: '',
+    });
   };
 
   const inputChange = (event) => {
@@ -165,4 +154,4 @@ const mapStateToProps = (state) => {
   return {};
 };
 
-export default connect(mapStateToProps, { signin })(Login);
+export default connect(mapStateToProps, { signin, guestSignin })(Login);
