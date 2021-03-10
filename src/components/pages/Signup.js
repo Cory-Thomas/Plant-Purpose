@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import * as yup from 'yup';
 import { connect } from 'react-redux';
-import { axiosWithAuth } from '../../utils/axiosWithAuth';
 import { signup, guestSignin } from '../../store/actions/userActions';
 import { StyledDiv } from './styles/LoginSignup-styling';
 import background from '../../assets/signInUpBG.svg';
