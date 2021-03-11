@@ -42,7 +42,7 @@ const MyPlants = ({ plantUpdate, setPlantUpdate, id }) => {
     return function cleanup() {
       mounted = false;
     };
-  }, [plants]);
+  }, [plants, id]);
 
   return (
     <StyledDiv className='myPlants'>

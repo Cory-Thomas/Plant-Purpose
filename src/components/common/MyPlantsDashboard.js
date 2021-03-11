@@ -23,7 +23,6 @@ const MyPlantsDashboard = ({ id }) => {
   function closeModal() {
     setIsOpen(false);
     setSelectedPlant([]);
-    // setPlantUpdate(plantUpdate + 1);
     setShowForm(false);
   }
 
@@ -44,7 +43,7 @@ const MyPlantsDashboard = ({ id }) => {
     return function cleanup() {
       mounted = false;
     };
-  }, [plants]);
+  }, [plants, id]);
 
   return (
     <StyledDiv className='myPlants'>
