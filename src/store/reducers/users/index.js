@@ -1,5 +1,5 @@
-import { ADD_USER } from '../actions/userActions';
-import { LOGOUT } from '../actions/userActions';
+import { ADD_USER } from '../../actions/userActions';
+import { LOGOUT } from '../../actions/userActions';
 
 const initialState = {
   username: '',

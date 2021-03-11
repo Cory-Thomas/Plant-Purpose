@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
 import { StyledDiv } from './styles/MyPlants-styling';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
 import { ImageNotSupported } from '@styled-icons/material/ImageNotSupported';
@@ -6,7 +7,7 @@ import { CloseOutline } from '@styled-icons/evaicons-outline/CloseOutline';
 import Modal from 'react-modal';
 import { PlantEditForm } from './PlantEditForm';
 
-export const MyPlants = ({ plantUpdate, setPlantUpdate }) => {
+const MyPlants = ({ plantUpdate, setPlantUpdate, id }) => {
   const [plants, setPlants] = useState([]);
   const [modalIsOpen, setIsOpen] = React.useState(false);
   const [selectedPlant, setSelectedPlant] = useState([]);
@@ -28,7 +29,7 @@ export const MyPlants = ({ plantUpdate, setPlantUpdate }) => {
     let mounted = true;
 
     axiosWithAuth()
-      .get(`/plants/user/${localStorage.getItem('id')}`)
+      .get(`/plants/user/${id}`)
       .then((res) => {
         if (mounted) {
           setPlants(res.data);
@@ -128,3 +129,11 @@ export const MyPlants = ({ plantUpdate, setPlantUpdate }) => {
     </StyledDiv>
   );
 };
+
+const mapStateToProps = (state) => {
+  return {
+    id: state.id,
+  };
+};
+
+export default connect(mapStateToProps, {})(MyPlants);

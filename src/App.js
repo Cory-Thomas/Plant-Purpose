@@ -7,7 +7,7 @@ import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { PersistGate } from 'redux-persist/integration/react';
 import thunk from 'redux-thunk';
-import reducer from './store/reducers';
+import reducer from './store/reducers/users';
 import GlobalStyles from './styles/GlobalStyles';
 import Typography from './styles/Typography';
 import { Home } from './components/pages/Home';
