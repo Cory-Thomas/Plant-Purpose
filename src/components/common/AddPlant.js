@@ -3,7 +3,7 @@ import { StyledDiv } from './styles/AddPlant-styling';
 import { PlusCircle } from '@styled-icons/bootstrap/PlusCircle';
 import pot from '../../assets/pot.PNG';
 import Modal from 'react-modal';
-import { AddPlantForm } from './AddPlantForm';
+import AddPlantForm from './AddPlantForm';
 import { CloseOutline } from '@styled-icons/evaicons-outline/CloseOutline';
 
 export const AddPlant = ({ plantUpdate, setPlantUpdate }) => {

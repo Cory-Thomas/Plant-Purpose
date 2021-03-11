@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
 import * as yup from 'yup';
+import { connect } from 'react-redux';
 import { StyledForm } from './styles/AddPlantForm-styling';
 
-export const AddPlantForm = ({ closeModal, plantUpdate, setPlantUpdate }) => {
+const AddPlantForm = ({ closeModal, plantUpdate, setPlantUpdate, id }) => {
   const [buttonDisabled, setButtonDisabled] = useState(true);
 
   const [values, setValues] = useState({
@@ -32,7 +33,7 @@ export const AddPlantForm = ({ closeModal, plantUpdate, setPlantUpdate }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const userId = localStorage.getItem('id');
+    const userId = id;
 
     axiosWithAuth()
       .post(`/plants/user/${userId}`, values)
@@ -111,3 +112,11 @@ export const AddPlantForm = ({ closeModal, plantUpdate, setPlantUpdate }) => {
     </StyledForm>
   );
 };
+
+const mapStateToProps = (state) => {
+  return {
+    id: state.id,
+  };
+};
+
+export default connect(mapStateToProps, {})(AddPlantForm);
