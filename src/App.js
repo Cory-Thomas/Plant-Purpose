@@ -2,12 +2,13 @@ import React from 'react';
 import 'normalize.css';
 import { Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { applyMiddleware, createStore } from 'redux';
+import { applyMiddleware, createStore, combineReducers } from 'redux';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { PersistGate } from 'redux-persist/integration/react';
 import thunk from 'redux-thunk';
-import reducer from './store/reducers/users';
+import userReducer from './store/reducers/users';
+import plantReducer from './store/reducers/plants';
 import GlobalStyles from './styles/GlobalStyles';
 import Typography from './styles/Typography';
 import { Home } from './components/pages/Home';
@@ -24,9 +25,15 @@ import { PrivateRoute } from './components/PrivateRoute/PrivateRoute';
 const persistConfig = {
   key: 'root',
   storage,
+  whitelist: ['userR'],
 };
 
-const persistedReducer = persistReducer(persistConfig, reducer);
+const rootReducer = combineReducers({
+  userR: userReducer,
+  plantR: plantReducer,
+});
+
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 const store = createStore(persistedReducer, applyMiddleware(thunk));
 
