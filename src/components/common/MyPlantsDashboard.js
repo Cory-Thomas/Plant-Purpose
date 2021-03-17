@@ -144,7 +144,7 @@ const MyPlantsDashboard = ({ id }) => {
 
 const mapStateToProps = (state) => {
   return {
-    id: state.id,
+    id: state.userR.id,
   };
 };
 

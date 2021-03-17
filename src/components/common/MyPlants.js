@@ -132,7 +132,7 @@ const MyPlants = ({ plantUpdate, setPlantUpdate, id }) => {
 
 const mapStateToProps = (state) => {
   return {
-    id: state.id,
+    id: state.userR.id,
   };
 };
 
