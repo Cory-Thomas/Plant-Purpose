@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { fetchPlants } from '../../store/actions/plantActions';
 import { StyledDiv } from './styles/MyPlantsDashboard-styling';
-import { axiosWithAuth } from '../../utils/axiosWithAuth';
 import { ChevronRight } from '@styled-icons/boxicons-regular/ChevronRight';
 import { ImageNotSupported } from '@styled-icons/material/ImageNotSupported';
 import { CloseOutline } from '@styled-icons/evaicons-outline/CloseOutline';
 import { PlantEditForm } from './PlantEditForm';
 import Modal from 'react-modal';
 
-const MyPlantsDashboard = ({ id }) => {
-  const [plants, setPlants] = useState([]);
+const MyPlantsDashboard = ({ id, fetchPlants, plants }) => {
   const [modalIsOpen, setIsOpen] = React.useState(false);
   const [selectedPlant, setSelectedPlant] = useState([]);
   const [showForm, setShowForm] = useState(false);
@@ -27,23 +26,8 @@ const MyPlantsDashboard = ({ id }) => {
   }
 
   useEffect(() => {
-    let mounted = true;
-
-    axiosWithAuth()
-      .get(`/plants/user/${id}`)
-      .then((res) => {
-        if (mounted) {
-          setPlants(res.data);
-        }
-      })
-      .catch((err) => {
-        console.log('Plants error: ', err);
-      });
-
-    return function cleanup() {
-      mounted = false;
-    };
-  }, [plants, id]);
+    fetchPlants(id);
+  }, [id, fetchPlants, plants]);
 
   return (
     <StyledDiv className='myPlants'>
@@ -145,7 +129,8 @@ const MyPlantsDashboard = ({ id }) => {
 const mapStateToProps = (state) => {
   return {
     id: state.userR.id,
+    plants: state.plantR.plants,
   };
 };
 
-export default connect(mapStateToProps, {})(MyPlantsDashboard);
+export default connect(mapStateToProps, { fetchPlants })(MyPlantsDashboard);

@@ -1,1 +1,1 @@
-export { fetchPlants, appendPlant, removePlant } from './plantActions';
+export { FETCH_PLANTS, fetchPlants } from './plantActions';

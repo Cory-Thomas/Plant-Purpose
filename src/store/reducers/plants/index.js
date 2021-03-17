@@ -1,14 +1,16 @@
+import { FETCH_PLANTS } from '../../actions/plantActions';
+
 const initialState = {
-  date: '',
-  id: '',
-  image_url: '',
-  nickname: '',
-  species: '',
-  user_id: '',
+  plants: [],
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+    case FETCH_PLANTS:
+      return {
+        ...state,
+        plants: action.payload.plants,
+      };
     default:
       return state;
   }
