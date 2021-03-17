@@ -6,8 +6,7 @@ export const StyledDiv = styled.div`
 
   .fc {
     /* the calendar root */
-    width: 338px;
-    height: 350px;
+    height: 400px;
 
     h2 {
       font-size: 2.4rem;
