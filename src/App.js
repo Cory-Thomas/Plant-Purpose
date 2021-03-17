@@ -25,7 +25,6 @@ import { PrivateRoute } from './components/PrivateRoute/PrivateRoute';
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['userR'],
 };
 
 const rootReducer = combineReducers({

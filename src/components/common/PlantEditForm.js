@@ -1,9 +1,17 @@
 import React, { useState } from 'react';
-import { axiosWithAuth } from '../../utils/axiosWithAuth';
+import { connect } from 'react-redux';
+import { editPlant, deletePlant } from '../../store/actions/plantActions';
 import { StyledForm } from './styles/PlantEditForm-styling';
 import { ArrowBack } from '@styled-icons/boxicons-regular/ArrowBack';
 
-export const PlantEditForm = ({ plant, showForm, setShowForm, closeModal }) => {
+const PlantEditForm = ({
+  plant,
+  showForm,
+  setShowForm,
+  closeModal,
+  editPlant,
+  deletePlant,
+}) => {
   const [values, setValues] = useState({
     nickname: `${plant.nickname}`,
     species: `${plant.species}`,
@@ -14,18 +22,13 @@ export const PlantEditForm = ({ plant, showForm, setShowForm, closeModal }) => {
     e.preventDefault();
     const plantId = plant.id;
 
-    axiosWithAuth()
-      .put(`/plants/${plantId}`, values)
-      .then(() => {
-        setValues({
-          nickname: '',
-          species: '',
-          image_url: '',
-        });
-      })
-      .catch((err) => {
-        console.log('Edit plants error: ', err);
-      });
+    editPlant(values, plantId);
+
+    setValues({
+      nickname: '',
+      species: '',
+      image_url: '',
+    });
 
     closeModal();
   };
@@ -33,20 +36,13 @@ export const PlantEditForm = ({ plant, showForm, setShowForm, closeModal }) => {
   const handleDelete = (e) => {
     const plantId = plant.id;
     e.preventDefault();
+    deletePlant(plantId);
 
-    axiosWithAuth()
-      .delete(`/plants/${plantId}`)
-      .then(() => {
-        setValues({
-          nickname: '',
-          species: '',
-          image_url: '',
-        });
-      })
-      .catch((err) => {
-        console.log('Delete Plant err: ', err);
-      });
-
+    setValues({
+      nickname: '',
+      species: '',
+      image_url: '',
+    });
     closeModal();
   };
 
@@ -100,3 +96,11 @@ export const PlantEditForm = ({ plant, showForm, setShowForm, closeModal }) => {
     </StyledForm>
   );
 };
+
+const mapStateToProps = (state) => {
+  return {};
+};
+
+export default connect(mapStateToProps, { editPlant, deletePlant })(
+  PlantEditForm
+);

@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import { fetchPlants } from '../../store/actions/plantActions';
 import { StyledDiv } from './styles/MyPlants-styling';
-import { axiosWithAuth } from '../../utils/axiosWithAuth';
 import { ImageNotSupported } from '@styled-icons/material/ImageNotSupported';
 import { CloseOutline } from '@styled-icons/evaicons-outline/CloseOutline';
 import Modal from 'react-modal';
-import { PlantEditForm } from './PlantEditForm';
+import PlantEditForm from './PlantEditForm';
 
-const MyPlants = ({ plantUpdate, setPlantUpdate, id }) => {
-  const [plants, setPlants] = useState([]);
+const MyPlants = ({ plantUpdate, setPlantUpdate, id, fetchPlants, plants }) => {
   const [modalIsOpen, setIsOpen] = React.useState(false);
   const [selectedPlant, setSelectedPlant] = useState([]);
   const [showForm, setShowForm] = useState(false);
@@ -26,23 +25,8 @@ const MyPlants = ({ plantUpdate, setPlantUpdate, id }) => {
   }
 
   useEffect(() => {
-    let mounted = true;
-
-    axiosWithAuth()
-      .get(`/plants/user/${id}`)
-      .then((res) => {
-        if (mounted) {
-          setPlants(res.data);
-        }
-      })
-      .catch((err) => {
-        console.log('Plants error: ', err);
-      });
-
-    return function cleanup() {
-      mounted = false;
-    };
-  }, [plants, id]);
+    fetchPlants(id);
+  }, [plants, fetchPlants, id]);
 
   return (
     <StyledDiv className='myPlants'>
@@ -133,7 +117,8 @@ const MyPlants = ({ plantUpdate, setPlantUpdate, id }) => {
 const mapStateToProps = (state) => {
   return {
     id: state.userR.id,
+    plants: state.plantR.plants,
   };
 };
 
-export default connect(mapStateToProps, {})(MyPlants);
+export default connect(mapStateToProps, { fetchPlants })(MyPlants);

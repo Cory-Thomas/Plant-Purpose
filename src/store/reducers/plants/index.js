@@ -11,6 +11,7 @@ const reducer = (state = initialState, action) => {
         ...state,
         plants: action.payload.plants,
       };
+
     default:
       return state;
   }

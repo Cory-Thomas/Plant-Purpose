@@ -6,7 +6,7 @@ import { StyledDiv } from './styles/MyPlantsDashboard-styling';
 import { ChevronRight } from '@styled-icons/boxicons-regular/ChevronRight';
 import { ImageNotSupported } from '@styled-icons/material/ImageNotSupported';
 import { CloseOutline } from '@styled-icons/evaicons-outline/CloseOutline';
-import { PlantEditForm } from './PlantEditForm';
+import PlantEditForm from './PlantEditForm';
 import Modal from 'react-modal';
 
 const MyPlantsDashboard = ({ id, fetchPlants, plants }) => {

@@ -14,3 +14,36 @@ export const fetchPlants = (id) => {
       });
   };
 };
+
+export const addPlant = (data, id) => {
+  return () => {
+    axiosWithAuth()
+      .post(`/plants/user/${id}`, data)
+      .then(() => {})
+      .catch((err) => {
+        console.log('AddPlants error: ', err);
+      });
+  };
+};
+
+export const editPlant = (data, id) => {
+  return () => {
+    axiosWithAuth()
+      .put(`/plants/${id}`, data)
+      .then(() => {})
+      .catch((err) => {
+        console.log('Edit plants error: ', err);
+      });
+  };
+};
+
+export const deletePlant = (id) => {
+  return () => {
+    axiosWithAuth()
+      .delete(`/plants/${id}`)
+      .then(() => {})
+      .catch((err) => {
+        console.log('Delete Plant err: ', err);
+      });
+  };
+};
