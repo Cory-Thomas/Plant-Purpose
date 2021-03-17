@@ -1,10 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { axiosWithAuth } from '../../utils/axiosWithAuth';
 import * as yup from 'yup';
 import { connect } from 'react-redux';
+import { addPlant } from '../../store/actions/plantActions';
 import { StyledForm } from './styles/AddPlantForm-styling';
 
-const AddPlantForm = ({ closeModal, plantUpdate, setPlantUpdate, id }) => {
+const AddPlantForm = ({
+  closeModal,
+  plantUpdate,
+  setPlantUpdate,
+  id,
+  addPlant,
+}) => {
   const [buttonDisabled, setButtonDisabled] = useState(true);
 
   const [values, setValues] = useState({
@@ -33,20 +39,13 @@ const AddPlantForm = ({ closeModal, plantUpdate, setPlantUpdate, id }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const userId = id;
+    addPlant(values, id);
 
-    axiosWithAuth()
-      .post(`/plants/user/${userId}`, values)
-      .then(() => {
-        setValues({
-          nickname: '',
-          species: '',
-          image_url: '',
-        });
-      })
-      .catch((err) => {
-        console.log('AddPlants error: ', err);
-      });
+    setValues({
+      nickname: '',
+      species: '',
+      image_url: '',
+    });
 
     closeModal();
     setPlantUpdate(plantUpdate + 1);
@@ -115,8 +114,8 @@ const AddPlantForm = ({ closeModal, plantUpdate, setPlantUpdate, id }) => {
 
 const mapStateToProps = (state) => {
   return {
-    id: state.id,
+    id: state.userR.id,
   };
 };
 
-export default connect(mapStateToProps, {})(AddPlantForm);
+export default connect(mapStateToProps, { addPlant })(AddPlantForm);

@@ -1,6 +1,6 @@
 import { axiosWithAuth } from '../../../utils/axiosWithAuth';
 
-export const ADD_USER = 'add-user';
+export const ADD_USER = 'add_user';
 export const LOGOUT = 'logout';
 
 export const signin = (data, history) => {

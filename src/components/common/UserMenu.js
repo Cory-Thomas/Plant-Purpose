@@ -67,7 +67,7 @@ const UserMenu = ({ username }) => {
 
 const mapStateToProps = (state) => {
   return {
-    username: state.username,
+    username: state.userR.username,
   };
 };
 
