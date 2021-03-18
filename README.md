@@ -5,6 +5,9 @@ A plant management system, which helps plant owners take better care of their pl
 ## Live Site
 [Plant Purpose Link](https://plantpurpose.netlify.app/)
 
+## Back-End GitHub Repo
+[Back-End Repo Link](https://github.com/BuildWeek-WaterMyPlants/back-end)
+
 ## Built With
 
 * React
