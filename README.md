@@ -11,9 +11,11 @@ A plant management system, which helps plant owners take better care of their pl
 ## Built With
 
 * React
+* Redux
 * Styled-components
 * Node
 * Express
+* PostgreSQL
 
 ## Blog
 I wrote a blog going into detail about the Plant Purpose app<br />
