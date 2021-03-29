@@ -1,21 +1,38 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { StyledDiv } from './styles/Notes-styling';
 
-export const Notes = () => {
+const Notes = ({ notes, plants }) => {
   return (
     <StyledDiv className='notes'>
       <h2>My Notes</h2>
-      <div>
-        <h3>Swiss Cheese Plant</h3>
-        <p>Consectetur fugiat nulla duis officia sunt.</p>
-      </div>
-      <div>
-        <h3>Philodendron Heartleaf</h3>
-        <p>
-          Quis velit enim labore tempor sunt. Cillum minim quis in officia sint
-          aliquip qui exercitation eu laboris aliquip.
-        </p>
-      </div>
+      {notes.map((note) => {
+        return (
+          <div key={note.id}>
+            <h3>
+              {plants.map((plant) => {
+                if (note.plant_id === plant.id) {
+                  return plant.nickname;
+                } else {
+                  // adding in 'else' to prevent a warning caused by the map not returning a value
+                  return null;
+                }
+              })}
+            </h3>
+
+            <p>{note.body}</p>
+          </div>
+        );
+      })}
     </StyledDiv>
   );
 };
+
+const mapStateToProps = (state) => {
+  return {
+    plants: state.plantR.plants,
+    notes: state.noteR.notes,
+  };
+};
+
+export default connect(mapStateToProps, {})(Notes);
