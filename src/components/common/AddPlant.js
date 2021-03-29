@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyledDiv } from './styles/AddPlant-styling';
 import { PlusCircle } from '@styled-icons/bootstrap/PlusCircle';
 import pot from '../../assets/pot.PNG';
 import Modal from 'react-modal';
 import AddPlantForm from './AddPlantForm';
 import { CloseOutline } from '@styled-icons/evaicons-outline/CloseOutline';
+import AddNoteForm from './AddNoteForm';
 
 export const AddPlant = ({ plantUpdate, setPlantUpdate }) => {
-  const [modalIsOpen, setIsOpen] = React.useState(false);
+  const [modalIsOpen, setIsOpen] = useState(false);
+  const [showForms, setShowForms] = useState(false);
 
   function openModal() {
     setIsOpen(true);
@@ -47,11 +49,16 @@ export const AddPlant = ({ plantUpdate, setPlantUpdate }) => {
         }}
       >
         <CloseOutline onClick={closeModal} className='exitLogo' />
-        <AddPlantForm
-          closeModal={closeModal}
-          plantUpdate={plantUpdate}
-          setPlantUpdate={setPlantUpdate}
-        />
+        {showForms ? (
+          <AddNoteForm />
+        ) : (
+          <AddPlantForm
+            closeModal={closeModal}
+            plantUpdate={plantUpdate}
+            setPlantUpdate={setPlantUpdate}
+            setShowForms={setShowForms}
+          />
+        )}
       </Modal>
     </StyledDiv>
   );

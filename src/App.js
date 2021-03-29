@@ -9,6 +9,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 import thunk from 'redux-thunk';
 import userReducer from './store/reducers/users';
 import plantReducer from './store/reducers/plants';
+import noteReducer from './store/reducers/notes';
 import GlobalStyles from './styles/GlobalStyles';
 import Typography from './styles/Typography';
 import { Home } from './components/pages/Home';
@@ -30,6 +31,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
   userR: userReducer,
   plantR: plantReducer,
+  noteR: noteReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
