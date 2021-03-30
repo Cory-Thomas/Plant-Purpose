@@ -1,1 +1,7 @@
-export { FETCH_NOTES, fetchNotes, addNote, deleteNote } from './noteActions';
+export {
+  FETCH_NOTES,
+  fetchNotes,
+  fetchAllNotes,
+  addNote,
+  deleteNote,
+} from './noteActions';

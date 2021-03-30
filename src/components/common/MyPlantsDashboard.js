@@ -76,7 +76,7 @@ const MyPlantsDashboard = ({ id, fetchPlants, plants }) => {
           style={{
             content: {
               width: '60%',
-              height: '630px',
+              height: '700px',
               margin: '0 auto',
               backgroundColor: 'white',
               display: 'flex',

@@ -10,6 +10,11 @@ export const StyledDiv = styled.div`
     margin: 0;
   }
 
+  header {
+    display: flex;
+    justify-content: space-between;
+  }
+
   h2 {
     font-size: 1.8rem;
     line-height: 27px;
@@ -24,5 +29,17 @@ export const StyledDiv = styled.div`
 
   p {
     padding: 6px 0;
+  }
+
+  a {
+    display: flex;
+
+    span {
+      margin: auto;
+    }
+
+    svg {
+      width: 25px;
+    }
   }
 `;

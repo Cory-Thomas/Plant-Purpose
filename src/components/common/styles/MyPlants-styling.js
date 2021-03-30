@@ -41,6 +41,10 @@ export const StyledDiv = styled.div`
         padding: 10px 8px;
         border-radius: 12px;
       }
+
+      .buttons {
+        color: red;
+      }
     }
   }
 `;

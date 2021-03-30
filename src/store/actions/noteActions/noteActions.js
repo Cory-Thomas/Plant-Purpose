@@ -2,11 +2,9 @@ import { axiosWithAuth } from '../../../utils/axiosWithAuth';
 
 export const FETCH_NOTES = 'fetch_notes';
 
-// export const fetchNotes = () => {
 export const fetchNotes = (id) => {
   return (dispatch) => {
     axiosWithAuth()
-      // .get(`/notes/`)
       .get(`/notes/plant/${id}`)
       .then((res) => {
         dispatch({ type: FETCH_NOTES, payload: { notes: res.data } });
@@ -17,8 +15,33 @@ export const fetchNotes = (id) => {
   };
 };
 
+export const fetchAllNotes = (plants) => {
+  let contain = [];
+
+  return (dispatch) => {
+    axiosWithAuth()
+      .get(`/notes/`)
+      .then((res) => {
+        res.data.forEach((note) => {
+          plants.forEach((plant) => {
+            if (note.plant_id === plant.id) {
+              contain.push(note);
+            }
+          });
+        });
+
+        dispatch({
+          type: FETCH_NOTES,
+          payload: { notes: contain },
+        });
+      })
+      .catch((err) => {
+        console.log('Notes error: ', err);
+      });
+  };
+};
+
 export const addNote = (data, id) => {
-  console.log(data, id);
   return () => {
     axiosWithAuth()
       .post(`/notes/plant/${id}`, data)

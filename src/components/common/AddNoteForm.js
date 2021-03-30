@@ -3,7 +3,7 @@ import * as yup from 'yup';
 import { connect } from 'react-redux';
 import { fetchNotes, addNote } from '../../store/actions/noteActions';
 
-const AddNoteForm = ({ fetchNotes, addNote, id, plant, notes }) => {
+const AddNoteForm = ({ fetchNotes, addNote, id, plant, notes, plantId }) => {
   const [buttonDisabled, setButtonDisabled] = useState(true);
 
   const [values, setValues] = useState({
@@ -28,12 +28,22 @@ const AddNoteForm = ({ fetchNotes, addNote, id, plant, notes }) => {
   }, [values, formSchema]);
 
   useEffect(() => {
-    fetchNotes(plant[0].id);
-  }, [notes, fetchNotes, plant]);
+    // fetchNotes(plant[0].id);
+    if (plantId === undefined) {
+      fetchNotes(plant[0].id);
+    } else {
+      fetchNotes(plantId);
+    }
+  }, [notes, fetchNotes, plant, plantId]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addNote(values, plant[0].id);
+
+    if (plantId === undefined) {
+      addNote(values, plant[0].id);
+    } else {
+      addNote(values, plantId);
+    }
 
     setValues({
       body: '',

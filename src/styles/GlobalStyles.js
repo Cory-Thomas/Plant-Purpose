@@ -59,10 +59,12 @@ const GlobalStyles = createGlobalStyle`
     align-items: center;
     padding: 20px 0;
     border-radius: 9px;
+    
 
     img {
-      width: 70%;
+      width: 50%;
       border-radius: 5px;
+      max-height: 533px;
     }
 
     .plantDetails {
@@ -78,9 +80,16 @@ const GlobalStyles = createGlobalStyle`
       }
     }
 
-    button {
-      width: 100px;
-      padding: 5px;
+    .buttons {
+      width: 300px;
+      display: flex;
+      justify-content: space-between;
+      margin-top: 15px;
+
+      button {
+        width: 100px;
+        padding: 5px;
+      }
     }
   }
 `;
