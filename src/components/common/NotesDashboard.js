@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Modal from 'react-modal';
@@ -6,7 +6,6 @@ import { StyledDiv } from './styles/NotesDashboard-styling';
 import { ChevronRight } from '@styled-icons/boxicons-regular/ChevronRight';
 import { CloseOutline } from '@styled-icons/evaicons-outline/CloseOutline';
 import { Trash } from '@styled-icons/ionicons-solid/Trash';
-import { useEffect } from 'react/cjs/react.development';
 import { fetchAllNotes, deleteNote } from '../../store/actions/noteActions';
 
 const NotesDashboard = ({ notes, plants, fetchAllNotes, deleteNote }) => {
