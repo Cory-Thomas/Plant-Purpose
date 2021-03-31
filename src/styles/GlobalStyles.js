@@ -92,6 +92,32 @@ const GlobalStyles = createGlobalStyle`
       }
     }
   }
+
+  .noteFormPage {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+
+    svg {
+      width: 35px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      margin: 5px 10px;
+      cursor: pointer;
+    }
+  }
+  .deleteNote {
+    div {
+      display: flex;
+      justify-content: space-between;
+
+      button {
+        padding: 6px;
+        width: 100px;
+      }
+    }
+  }
 `;
 
 export default GlobalStyles;

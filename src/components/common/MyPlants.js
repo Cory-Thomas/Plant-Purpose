@@ -113,8 +113,11 @@ const MyPlants = ({ plantUpdate, setPlantUpdate, id, fetchPlants, plants }) => {
               </div>
             </div>
           ) : (
-            <div>
-              <AddNoteForm plantId={selectedPlant.id} />
+            <div className='noteFormPage'>
+              <AddNoteForm
+                plantId={selectedPlant.id}
+                plantName={selectedPlant.nickname}
+              />
               <ArrowBack onClick={() => setShowForm(2)} />
             </div>
           )}

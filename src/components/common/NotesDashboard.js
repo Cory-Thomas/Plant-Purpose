@@ -44,30 +44,34 @@ const NotesDashboard = ({ notes, plants, fetchAllNotes, deleteNote }) => {
         </Link>
       </header>
 
-      {notes
-        .slice(0, 2)
-        .reverse()
-        .map((note) => {
-          return (
-            <div key={note.id}>
-              <header>
-                <h3>
-                  {plants.map((plant) => {
-                    if (note.plant_id === plant.id) {
-                      return plant.nickname;
-                    } else {
-                      // adding in 'else' to prevent a warning caused by the map not returning a value
+      {notes.length === 0 ? (
+        <div className='noNotes'>No Notes Currently Uploaded</div>
+      ) : (
+        notes
+          .slice(0, 2)
+          .reverse()
+          .map((note) => {
+            return (
+              <div key={note.id}>
+                <header>
+                  <h3>
+                    {plants.map((plant) => {
+                      if (note.plant_id === plant.id) {
+                        return plant.nickname;
+                      } else {
+                        // adding in 'else' to prevent a warning caused by the map not returning a value
 
-                      return null;
-                    }
-                  })}
-                </h3>
-                <Trash onClick={() => openModal(note)} />
-              </header>
-              <p>{note.body}</p>
-            </div>
-          );
-        })}
+                        return null;
+                      }
+                    })}
+                  </h3>
+                  <Trash onClick={() => openModal(note)} />
+                </header>
+                <p>{note.body}</p>
+              </div>
+            );
+          })
+      )}
 
       <Modal
         isOpen={modalIsOpen}
@@ -90,9 +94,13 @@ const NotesDashboard = ({ notes, plants, fetchAllNotes, deleteNote }) => {
         }}
       >
         <CloseOutline onClick={closeModal} className='exitLogo' />
-        <div>Want to delete note?</div>
-        <button onClick={deleteSelectedNote}>Yes</button>
-        <button onClick={closeModal}>No</button>
+        <section className='deleteNote'>
+          <h2>Want to delete note?</h2>
+          <div>
+            <button onClick={deleteSelectedNote}>Yes</button>
+            <button onClick={closeModal}>No</button>
+          </div>
+        </section>
       </Modal>
     </StyledDiv>
   );

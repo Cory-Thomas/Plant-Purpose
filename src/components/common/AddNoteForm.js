@@ -2,8 +2,17 @@ import React, { useState, useEffect } from 'react';
 import * as yup from 'yup';
 import { connect } from 'react-redux';
 import { fetchNotes, addNote } from '../../store/actions/noteActions';
+import { StyledForm } from './styles/addNoteForm-styling';
 
-const AddNoteForm = ({ fetchNotes, addNote, id, plant, notes, plantId }) => {
+const AddNoteForm = ({
+  fetchNotes,
+  addNote,
+  id,
+  plant,
+  notes,
+  plantId,
+  plantName,
+}) => {
   const [buttonDisabled, setButtonDisabled] = useState(true);
 
   const [values, setValues] = useState({
@@ -28,7 +37,6 @@ const AddNoteForm = ({ fetchNotes, addNote, id, plant, notes, plantId }) => {
   }, [values, formSchema]);
 
   useEffect(() => {
-    // fetchNotes(plant[0].id);
     if (plantId === undefined) {
       fetchNotes(plant[0].id);
     } else {
@@ -82,8 +90,9 @@ const AddNoteForm = ({ fetchNotes, addNote, id, plant, notes, plantId }) => {
   };
 
   return (
-    <section>
-      <h2>{plant[0].nickname}</h2>
+    <StyledForm>
+      <h2>Plant: {plantId === undefined ? plant[0].nickname : plantName}</h2>
+
       <h3>Add Notes</h3>
       <section>
         <input
@@ -108,7 +117,7 @@ const AddNoteForm = ({ fetchNotes, addNote, id, plant, notes, plantId }) => {
       <button disabled={buttonDisabled} onClick={handleSubmit}>
         Save Note
       </button>
-    </section>
+    </StyledForm>
   );
 };
 

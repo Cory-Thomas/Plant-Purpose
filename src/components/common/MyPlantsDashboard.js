@@ -8,11 +8,13 @@ import { ImageNotSupported } from '@styled-icons/material/ImageNotSupported';
 import { CloseOutline } from '@styled-icons/evaicons-outline/CloseOutline';
 import PlantEditForm from './PlantEditForm';
 import Modal from 'react-modal';
+import { ArrowBack } from '@styled-icons/boxicons-regular/ArrowBack';
+import AddNoteForm from './AddNoteForm';
 
 const MyPlantsDashboard = ({ id, fetchPlants, plants }) => {
   const [modalIsOpen, setIsOpen] = useState(false);
   const [selectedPlant, setSelectedPlant] = useState([]);
-  const [showForm, setShowForm] = useState(false);
+  const [showForm, setShowForm] = useState(2);
 
   function openModal(props) {
     setSelectedPlant(props);
@@ -22,7 +24,7 @@ const MyPlantsDashboard = ({ id, fetchPlants, plants }) => {
   function closeModal() {
     setIsOpen(false);
     setSelectedPlant([]);
-    setShowForm(false);
+    setShowForm(2);
   }
 
   useEffect(() => {
@@ -90,14 +92,14 @@ const MyPlantsDashboard = ({ id, fetchPlants, plants }) => {
         >
           <CloseOutline onClick={closeModal} className='exitLogo' />
 
-          {showForm === true ? (
+          {showForm === 1 ? (
             <PlantEditForm
               plant={selectedPlant}
               showForm={showForm}
               setShowForm={setShowForm}
               closeModal={closeModal}
             />
-          ) : (
+          ) : showForm === 2 ? (
             <div className='plantCard'>
               {/* if plant image url doesn't exist then show a no image icon */}
               {selectedPlant.image_url === '' ? (
@@ -117,7 +119,18 @@ const MyPlantsDashboard = ({ id, fetchPlants, plants }) => {
                 </div>
               </div>
 
-              <button onClick={() => setShowForm(!showForm)}>Edit Plant</button>
+              <div className='buttons'>
+                <button onClick={() => setShowForm(1)}>Edit Plant</button>
+                <button onClick={() => setShowForm(3)}>Add Note</button>
+              </div>
+            </div>
+          ) : (
+            <div className='noteFormPage'>
+              <AddNoteForm
+                plantId={selectedPlant.id}
+                plantName={selectedPlant.nickname}
+              />
+              <ArrowBack onClick={() => setShowForm(2)} />
             </div>
           )}
         </Modal>

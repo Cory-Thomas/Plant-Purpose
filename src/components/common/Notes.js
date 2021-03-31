@@ -87,9 +87,13 @@ const Notes = ({ notes, plants, fetchAllNotes, deleteNote }) => {
         }}
       >
         <CloseOutline onClick={closeModal} className='exitLogo' />
-        <div>Want to delete note?</div>
-        <button onClick={deleteSelectedNote}>Yes</button>
-        <button onClick={closeModal}>No</button>
+        <section className='deleteNote'>
+          <h2>Want to delete note?</h2>
+          <div>
+            <button onClick={deleteSelectedNote}>Yes</button>
+            <button onClick={closeModal}>No</button>
+          </div>
+        </section>
       </Modal>
     </StyledDiv>
   );
