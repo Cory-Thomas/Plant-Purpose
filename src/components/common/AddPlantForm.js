@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import * as yup from 'yup';
 import { connect } from 'react-redux';
-import { addPlant } from '../../store/actions/plantActions';
+import { addPlant, captureId } from '../../store/actions/plantActions';
 import { StyledForm } from './styles/AddPlantForm-styling';
 
 const AddPlantForm = ({
-  closeModal,
   plantUpdate,
   setPlantUpdate,
+  setShowForms,
   id,
   addPlant,
 }) => {
@@ -39,15 +39,16 @@ const AddPlantForm = ({
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     addPlant(values, id);
+    setTimeout(console.log(captureId), 1000);
 
     setValues({
       nickname: '',
       species: '',
       image_url: '',
     });
-
-    closeModal();
+    setShowForms(true);
     setPlantUpdate(plantUpdate + 1);
   };
 
@@ -83,31 +84,44 @@ const AddPlantForm = ({
 
   return (
     <StyledForm onSubmit={handleSubmit}>
-      <input
-        type='text'
-        name='nickname'
-        placeholder='Plant Name'
-        values={values.nickname}
-        onChange={inputChange}
-      />
+      <header>
+        <h2>Add a Plant</h2>
+      </header>
+      <div>
+        <section>
+          <div>
+            <input
+              type='text'
+              name='nickname'
+              placeholder='Plant Name'
+              values={values.nickname}
+              onChange={inputChange}
+            />
 
-      <input
-        type='text'
-        name='species'
-        placeholder='Plant Species'
-        values={values.species}
-        onChange={inputChange}
-      />
+            <input
+              type='text'
+              name='species'
+              placeholder='Plant Species'
+              values={values.species}
+              onChange={inputChange}
+            />
+          </div>
+        </section>
 
-      <input
-        type='text'
-        name='image_url'
-        placeholder='Image URL Address'
-        values={values.image_url}
-        onChange={inputChange}
-      />
+        <section>
+          <div>
+            <input
+              type='text'
+              name='image_url'
+              placeholder='Image URL Address'
+              values={values.image_url}
+              onChange={inputChange}
+            />
+          </div>
 
-      <button disabled={buttonDisabled}>Add plant!</button>
+          <button disabled={buttonDisabled}>Add Plant!</button>
+        </section>
+      </div>
     </StyledForm>
   );
 };

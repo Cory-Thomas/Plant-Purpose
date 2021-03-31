@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { StyledDiv } from './styles/Dashboard-styling';
 import Header from '../common/Header';
 import UserMenu from '../common/UserMenu';
-import { Tabs } from '../common/Tabs';
+import Tabs from '../common/Tabs';
 import MyPlantsDashboard from '../common/MyPlantsDashboard';
-import { Notes } from '../common/Notes';
-import { Calendar } from '../common/Calendar';
+import NotesDashboard from '../common/NotesDashboard';
+import Calendar from '../common/Calendar';
 import { AddPlant } from '../common/AddPlant';
 
 export const Dashboard = () => {
@@ -19,7 +19,7 @@ export const Dashboard = () => {
         <UserMenu />
         <Tabs />
         <MyPlantsDashboard plantUpdate={plantUpdate} />
-        <Notes />
+        <NotesDashboard />
         <Calendar />
         <AddPlant setPlantUpdate={setPlantUpdate} plantUpdate={plantUpdate} />
       </main>

@@ -58,7 +58,7 @@ const PlantEditForm = ({
 
   return (
     <StyledForm onSubmit={handleSubmit}>
-      <ArrowBack onClick={() => setShowForm(!showForm)} />
+      <ArrowBack onClick={() => setShowForm(2)} />
 
       <input
         type='text'

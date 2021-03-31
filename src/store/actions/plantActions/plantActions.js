@@ -1,6 +1,7 @@
 import { axiosWithAuth } from '../../../utils/axiosWithAuth';
 
 export const FETCH_PLANTS = 'fetch_plants';
+export let captureId = null;
 
 export const fetchPlants = (id) => {
   return (dispatch) => {
@@ -19,7 +20,9 @@ export const addPlant = (data, id) => {
   return () => {
     axiosWithAuth()
       .post(`/plants/user/${id}`, data)
-      .then(() => {})
+      .then((res) => {
+        captureId = res.data.plantId[0];
+      })
       .catch((err) => {
         console.log('AddPlants error: ', err);
       });

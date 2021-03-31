@@ -21,6 +21,10 @@ export const StyledDiv = styled.div`
     letter-spacing: 0.08em;
   }
 
+  .noNotes {
+    padding: 30px 20px;
+  }
+
   div {
     background-color: var(--background);
     padding: 10px 6px;

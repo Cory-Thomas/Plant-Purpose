@@ -6,11 +6,13 @@ import { ImageNotSupported } from '@styled-icons/material/ImageNotSupported';
 import { CloseOutline } from '@styled-icons/evaicons-outline/CloseOutline';
 import Modal from 'react-modal';
 import PlantEditForm from './PlantEditForm';
+import { ArrowBack } from '@styled-icons/boxicons-regular/ArrowBack';
+import AddNoteForm from './AddNoteForm';
 
 const MyPlants = ({ plantUpdate, setPlantUpdate, id, fetchPlants, plants }) => {
-  const [modalIsOpen, setIsOpen] = React.useState(false);
+  const [modalIsOpen, setIsOpen] = useState(false);
   const [selectedPlant, setSelectedPlant] = useState([]);
-  const [showForm, setShowForm] = useState(false);
+  const [showForm, setShowForm] = useState(2);
 
   function openModal(props) {
     setSelectedPlant(props);
@@ -21,7 +23,7 @@ const MyPlants = ({ plantUpdate, setPlantUpdate, id, fetchPlants, plants }) => {
     setIsOpen(false);
     setSelectedPlant([]);
     setPlantUpdate(plantUpdate + 1);
-    setShowForm(false);
+    setShowForm(2);
   }
 
   useEffect(() => {
@@ -64,7 +66,7 @@ const MyPlants = ({ plantUpdate, setPlantUpdate, id, fetchPlants, plants }) => {
           style={{
             content: {
               width: '60%',
-              height: '630px',
+              height: '700px',
               margin: '0 auto',
               backgroundColor: 'white',
               display: 'flex',
@@ -78,14 +80,14 @@ const MyPlants = ({ plantUpdate, setPlantUpdate, id, fetchPlants, plants }) => {
         >
           <CloseOutline onClick={closeModal} className='exitLogo' />
 
-          {showForm === true ? (
+          {showForm === 1 ? (
             <PlantEditForm
               plant={selectedPlant}
               showForm={showForm}
               setShowForm={setShowForm}
               closeModal={closeModal}
             />
-          ) : (
+          ) : showForm === 2 ? (
             <div className='plantCard'>
               {/* if plant image url doesn't exist then show a no image icon */}
               {selectedPlant.image_url === '' ? (
@@ -105,7 +107,19 @@ const MyPlants = ({ plantUpdate, setPlantUpdate, id, fetchPlants, plants }) => {
                 </div>
               </div>
 
-              <button onClick={() => setShowForm(!showForm)}>Edit Plant</button>
+              <div className='buttons'>
+                <button onClick={() => setShowForm(1)}>Edit Plant</button>
+                <button onClick={() => setShowForm(3)}>Add Note</button>
+              </div>
+            </div>
+          ) : (
+            <div className='noteFormPage'>
+              <AddNoteForm
+                plantId={selectedPlant.id}
+                plantName={selectedPlant.nickname}
+                closeModal={closeModal}
+              />
+              <ArrowBack onClick={() => setShowForm(2)} />
             </div>
           )}
         </Modal>

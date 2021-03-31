@@ -1,5 +1,6 @@
 export {
   FETCH_PLANTS,
+  captureId,
   fetchPlants,
   addPlant,
   editPlant,
