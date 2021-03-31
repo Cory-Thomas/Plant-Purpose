@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Modal from 'react-modal';
-import { StyledDiv } from './styles/Notes-styling';
+import { StyledDiv } from './styles/NotesDashboard-styling';
 import { ChevronRight } from '@styled-icons/boxicons-regular/ChevronRight';
 import { CloseOutline } from '@styled-icons/evaicons-outline/CloseOutline';
 import { Trash } from '@styled-icons/ionicons-solid/Trash';
 import { useEffect } from 'react/cjs/react.development';
 import { fetchAllNotes, deleteNote } from '../../store/actions/noteActions';
 
-const Notes = ({ notes, plants, fetchAllNotes, deleteNote }) => {
+const NotesDashboard = ({ notes, plants, fetchAllNotes, deleteNote }) => {
   const [modalIsOpen, setIsOpen] = useState(false);
   const [selectedNote, setSelectedNote] = useState([]);
 
@@ -32,7 +32,7 @@ const Notes = ({ notes, plants, fetchAllNotes, deleteNote }) => {
 
   useEffect(() => {
     fetchAllNotes(plants);
-  }, [fetchAllNotes, plants, selectedNote, notes]);
+  }, [fetchAllNotes, plants]);
 
   return (
     <StyledDiv className='notes'>
@@ -44,27 +44,30 @@ const Notes = ({ notes, plants, fetchAllNotes, deleteNote }) => {
         </Link>
       </header>
 
-      {notes.map((note) => {
-        return (
-          <div key={note.id}>
-            <header>
-              <h3>
-                {plants.map((plant) => {
-                  if (note.plant_id === plant.id) {
-                    return plant.nickname;
-                  } else {
-                    // adding in 'else' to prevent a warning caused by the map not returning a value
+      {notes
+        .slice(0, 2)
+        .reverse()
+        .map((note) => {
+          return (
+            <div key={note.id}>
+              <header>
+                <h3>
+                  {plants.map((plant) => {
+                    if (note.plant_id === plant.id) {
+                      return plant.nickname;
+                    } else {
+                      // adding in 'else' to prevent a warning caused by the map not returning a value
 
-                    return null;
-                  }
-                })}
-              </h3>
-              <Trash onClick={() => openModal(note)} />
-            </header>
-            <p>{note.body}</p>
-          </div>
-        );
-      })}
+                      return null;
+                    }
+                  })}
+                </h3>
+                <Trash onClick={() => openModal(note)} />
+              </header>
+              <p>{note.body}</p>
+            </div>
+          );
+        })}
 
       <Modal
         isOpen={modalIsOpen}
@@ -102,4 +105,6 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { fetchAllNotes, deleteNote })(Notes);
+export default connect(mapStateToProps, { fetchAllNotes, deleteNote })(
+  NotesDashboard
+);

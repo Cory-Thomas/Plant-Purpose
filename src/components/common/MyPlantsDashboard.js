@@ -10,7 +10,7 @@ import PlantEditForm from './PlantEditForm';
 import Modal from 'react-modal';
 
 const MyPlantsDashboard = ({ id, fetchPlants, plants }) => {
-  const [modalIsOpen, setIsOpen] = React.useState(false);
+  const [modalIsOpen, setIsOpen] = useState(false);
   const [selectedPlant, setSelectedPlant] = useState([]);
   const [showForm, setShowForm] = useState(false);
 

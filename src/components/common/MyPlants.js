@@ -10,7 +10,7 @@ import { ArrowBack } from '@styled-icons/boxicons-regular/ArrowBack';
 import AddNoteForm from './AddNoteForm';
 
 const MyPlants = ({ plantUpdate, setPlantUpdate, id, fetchPlants, plants }) => {
-  const [modalIsOpen, setIsOpen] = React.useState(false);
+  const [modalIsOpen, setIsOpen] = useState(false);
   const [selectedPlant, setSelectedPlant] = useState([]);
   const [showForm, setShowForm] = useState(2);
 
