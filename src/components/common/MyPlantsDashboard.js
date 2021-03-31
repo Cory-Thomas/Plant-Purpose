@@ -129,6 +129,7 @@ const MyPlantsDashboard = ({ id, fetchPlants, plants }) => {
               <AddNoteForm
                 plantId={selectedPlant.id}
                 plantName={selectedPlant.nickname}
+                closeModal={closeModal}
               />
               <ArrowBack onClick={() => setShowForm(2)} />
             </div>

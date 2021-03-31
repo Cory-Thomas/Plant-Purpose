@@ -4,15 +4,7 @@ import { connect } from 'react-redux';
 import { fetchNotes, addNote } from '../../store/actions/noteActions';
 import { StyledForm } from './styles/addNoteForm-styling';
 
-const AddNoteForm = ({
-  fetchNotes,
-  addNote,
-  id,
-  plant,
-  notes,
-  plantId,
-  plantName,
-}) => {
+const AddNoteForm = ({ addNote, plant, plantId, plantName, closeModal }) => {
   const [buttonDisabled, setButtonDisabled] = useState(true);
 
   const [values, setValues] = useState({
@@ -36,16 +28,9 @@ const AddNoteForm = ({
     });
   }, [values, formSchema]);
 
-  useEffect(() => {
-    if (plantId === undefined) {
-      fetchNotes(plant[0].id);
-    } else {
-      fetchNotes(plantId);
-    }
-  }, [notes, fetchNotes, plant, plantId]);
-
   const handleSubmit = (e) => {
     e.preventDefault();
+    closeModal();
 
     if (plantId === undefined) {
       addNote(values, plant[0].id);
@@ -110,9 +95,6 @@ const AddNoteForm = ({
           onChange={inputChange}
         />
       </section>
-      {notes.map((note) => {
-        return <div key={note.id}>{note.body}</div>;
-      })}
 
       <button disabled={buttonDisabled} onClick={handleSubmit}>
         Save Note

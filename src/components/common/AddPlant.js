@@ -50,10 +50,9 @@ export const AddPlant = ({ plantUpdate, setPlantUpdate }) => {
       >
         <CloseOutline onClick={closeModal} className='exitLogo' />
         {showForms ? (
-          <AddNoteForm />
+          <AddNoteForm closeModal={closeModal} />
         ) : (
           <AddPlantForm
-            closeModal={closeModal}
             plantUpdate={plantUpdate}
             setPlantUpdate={setPlantUpdate}
             setShowForms={setShowForms}

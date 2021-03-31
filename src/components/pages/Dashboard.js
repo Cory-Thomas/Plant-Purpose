@@ -5,7 +5,7 @@ import UserMenu from '../common/UserMenu';
 import Tabs from '../common/Tabs';
 import MyPlantsDashboard from '../common/MyPlantsDashboard';
 import NotesDashboard from '../common/NotesDashboard';
-import { Calendar } from '../common/Calendar';
+import Calendar from '../common/Calendar';
 import { AddPlant } from '../common/AddPlant';
 
 export const Dashboard = () => {
